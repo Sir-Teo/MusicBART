@@ -20,11 +20,12 @@ class MusicBART(nn.Module):
         )
         return outputs
     
-    def generate(self, prompt, num_beams=4, max_length=512):
-        input_ids = self.tokenizer.encode(prompt, return_tensors="pt")
+    def generate(self, input_ids, attention_mask, num_beams=4, max_length=512):
+        num_beams = int(num_beams)  # Convert num_beams to a scalar value
         
         outputs = self.model.generate(
             input_ids=input_ids,
+            attention_mask=attention_mask,
             num_beams=num_beams,
             max_length=max_length,
             early_stopping=True

@@ -2,7 +2,7 @@
 from data_preprocessing import preprocess_data, load_dataset
 from tokenizer import PromptTokenizer, MidiTokenizer
 from model import MusicBART, train, evaluate
-from evaluation import evaluate_model
+from evaluation import evaluate_model, evaluate_midi
 import torch
 
 
@@ -62,8 +62,16 @@ def main():
     num_samples = 10
     for _ in range(num_samples):
         prompt_tensor = torch.tensor(prompt_tokenizer.tokenize(prompt)).to(device)
-        generated_sequence = trained_model.generate(prompt_tensor)
+        # Add batch dimension to prompt_tensor
+        prompt_tensor = prompt_tensor.unsqueeze(0)
+
+        # Generate the attention mask for the prompt tensor
+        attention_mask = torch.ones(prompt_tensor.shape, dtype=torch.long, device=device)
+
+        # Generate the sequence
+        generated_sequence = trained_model.generate(prompt_tensor, attention_mask)
         generated_midi = midi_tokenizer.detokenize(generated_sequence)
+        print(f"Generated MIDI: {generated_midi}")
         evaluate_midi(generated_midi)
     
     # Evaluate the model on the validation set using evaluation metrics

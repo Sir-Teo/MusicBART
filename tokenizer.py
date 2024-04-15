@@ -112,6 +112,12 @@ class MidiTokenizer:
         return token_ids
 
     def detokenize(self, token_ids):
-        tokens = [self.id_to_token[token_id] for token_id in token_ids]
-        midi_notation = ''.join(tokens)
-        return midi_notation
+        tokens = []
+        for token_id in token_ids:
+            if token_id in self.id_to_token:
+                tokens.append(self.id_to_token[token_id])
+            else:
+                tokens.append(f"<UNKNOWN_{token_id}>")
+        
+        midi_data = "".join(tokens)
+        return midi_data
