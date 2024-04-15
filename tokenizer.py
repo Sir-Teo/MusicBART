@@ -1,3 +1,5 @@
+# tokenizer.py
+
 import re
 from transformers import BertTokenizer
 
@@ -7,6 +9,7 @@ class PromptTokenizer:
 
     def tokenize(self, prompt):
         # Tokenize the prompt text
+        
         tokens = self.tokenizer.tokenize(prompt)
         token_ids = self.tokenizer.convert_tokens_to_ids(tokens)
         return token_ids
@@ -30,16 +33,18 @@ class MidiTokenizer:
                     'a', 'b', 'c', 'd', 'e', 'f', 'g',  # Lowercase pitch classes
                     '^', '_', '=',  # Accidentals (sharp, flat, natural)
                     ',', '\'',  # Octave modifiers (lower and upper octave)
-                    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/', '.',  # Durations and separators
+                    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',  # Durations
+                    '/', '.',  # Duration modifiers (division and dot)
                     '(', ')',  # Slurs and ties
                     '[', ']',  # Chord brackets
-                    '|', ':', '::',  # Barlines and repeats
+                    '|',  # Barline
+                    ':', '::',  # Repeats
                     '{', '}',  # Grace note braces
                     '!', '+', '-', '*',  # Ornaments and articulations
                     '"',  # Chord symbol quotes
                     '%', '$',  # Directives and inline fields
                     '<', '>',  # Dynamics
-                    '&',  # Voice overlay
+                    'V&',  # Voice overlay (pair of tokens)
                     '\\',  # Escape character
                     'z',  # Rest
                     ' ',  # Space
@@ -63,8 +68,47 @@ class MidiTokenizer:
                 self.vocab_size += 1
 
     def tokenize(self, midi_notation):
-        tokens = list(midi_notation)
+        if isinstance(midi_notation, list):
+            midi_notation = ' '.join(midi_notation)
+
+        print(f"MIDI notation: {midi_notation}")
+        tokens = []
+        i = 0
+        while i < len(midi_notation):
+            if midi_notation[i] == '\\' and i < len(midi_notation) - 1:
+                if midi_notation[i + 1] == 'n':
+                    tokens.append('\\n')
+                    i += 2
+                else:
+                    tokens.append(midi_notation[i])
+                    i += 1
+            elif midi_notation[i] == '[':
+                j = i + 1
+                while j < len(midi_notation) and midi_notation[j] != ']':
+                    j += 1
+                if j < len(midi_notation):
+                    tokens.extend(['['] + re.findall(r'[A-Ga-g][#b]?\d+|\d+', midi_notation[i + 1:j]) + [']'])
+                    i = j + 1
+                else:
+                    tokens.append(midi_notation[i])
+                    i += 1
+            elif re.match(r'[A-Ga-g][#b]?\d+', midi_notation[i:]):
+                match = re.match(r'[A-Ga-g][#b]?\d+', midi_notation[i:])
+                tokens.extend(re.findall(r'[A-Ga-g][#b]?|\d+', match.group()))
+                i += len(match.group())
+            elif re.match(r'\d+/', midi_notation[i:]):
+                match = re.match(r'\d+/', midi_notation[i:])
+                tokens.extend(re.findall(r'\d+|/', match.group()))
+                i += len(match.group())
+            elif midi_notation[i] == '&':
+                tokens.extend(['V&'])  # Voice overlay as a pair of tokens
+                i += 1
+            else:
+                tokens.append(midi_notation[i])
+                i += 1
+
         token_ids = [self.token_to_id[token] for token in tokens if token in self.token_to_id]
+        print(f"Token IDs: {token_ids}")
         return token_ids
 
     def detokenize(self, token_ids):

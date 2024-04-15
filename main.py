@@ -6,15 +6,12 @@ from evaluation import evaluate_model
 import torch
 
 
-def collate_fn(batch):
+def collate_fn(batch, device):
     input_ids = [torch.tensor(item['input_ids']) for item in batch]
     labels = [torch.tensor(item['labels']) for item in batch]
-    
-    input_ids = torch.nn.utils.rnn.pad_sequence(input_ids, batch_first=True, padding_value=0)
-    labels = torch.nn.utils.rnn.pad_sequence(labels, batch_first=True, padding_value=0)
-    
-    attention_mask = torch.where(input_ids != 0, torch.ones_like(input_ids), torch.zeros_like(input_ids))
-    
+    input_ids = torch.nn.utils.rnn.pad_sequence(input_ids, batch_first=True, padding_value=0).to(device)
+    labels = torch.nn.utils.rnn.pad_sequence(labels, batch_first=True, padding_value=0).to(device)
+    attention_mask = torch.where(input_ids != 0, torch.ones_like(input_ids), torch.zeros_like(input_ids)).to(device)
     return {'input_ids': input_ids, 'attention_mask': attention_mask, 'labels': labels}
 
 def main():
@@ -43,11 +40,11 @@ def main():
     val_dataset = tokenized_dataset[train_size:]
     
     # Create data loaders
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=8, shuffle=True, collate_fn=collate_fn)
-    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=8, collate_fn=collate_fn)
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=8, shuffle=True, collate_fn=lambda batch: collate_fn(batch, device))
+    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=8, collate_fn=lambda batch: collate_fn(batch, device))
     
     # Initialize the MusicBART model
-    model = MusicBART()
+    model = MusicBART().to(device)
     
     # Set the training parameters
     epochs = 10
@@ -64,8 +61,8 @@ def main():
     # Generate and evaluate midi files
     num_samples = 10
     for _ in range(num_samples):
-        prompt = "Sample prompt"
-        generated_sequence = trained_model.generate(prompt)
+        prompt_tensor = torch.tensor(prompt_tokenizer.tokenize(prompt)).to(device)
+        generated_sequence = trained_model.generate(prompt_tensor)
         generated_midi = midi_tokenizer.detokenize(generated_sequence)
         evaluate_midi(generated_midi)
     

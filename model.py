@@ -44,8 +44,10 @@ def train(model, dataset, epochs, batch_size, learning_rate, device):
         
         for batch in dataset:
             input_ids = batch["input_ids"].to(device)
+            print("Input IDs shape:", input_ids.shape)
             attention_mask = batch["attention_mask"].to(device)
             labels = batch["labels"].to(device)
+            print("Labels shape:", labels.shape)
             
             optimizer.zero_grad()
             outputs = model(input_ids, attention_mask, labels=labels)
