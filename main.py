@@ -1,25 +1,40 @@
-from data_preprocessing import preprocess_data
-from tokenizer import MidiTokenizer
+# main.py
+from data_preprocessing import preprocess_data, load_dataset
+from tokenizer import PromptTokenizer, MidiTokenizer
 from model import MusicBART, train, evaluate
 from evaluation import evaluate_model
 import torch
+
+
+def collate_fn(batch):
+    input_ids = [torch.tensor(item['input_ids']) for item in batch]
+    labels = [torch.tensor(item['labels']) for item in batch]
+    
+    input_ids = torch.nn.utils.rnn.pad_sequence(input_ids, batch_first=True, padding_value=0)
+    labels = torch.nn.utils.rnn.pad_sequence(labels, batch_first=True, padding_value=0)
+    
+    attention_mask = torch.where(input_ids != 0, torch.ones_like(input_ids), torch.zeros_like(input_ids))
+    
+    return {'input_ids': input_ids, 'attention_mask': attention_mask, 'labels': labels}
 
 def main():
     # Set the device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     # Preprocess the dataset
-    dataset_path = "path/to/your/dataset"
-    dataset = preprocess_data(dataset_path)
+    dataset_path = "data/sample.json"
+    dataset = load_dataset(dataset_path)
+    dataset = preprocess_data(dataset)
     
-    # Create the tokenizer
-    tokenizer = MidiTokenizer()
+    # Create the tokenizers
+    prompt_tokenizer = PromptTokenizer()
+    midi_tokenizer = MidiTokenizer()
     
     # Tokenize the dataset
     tokenized_dataset = []
-    for prompt, midi_tokens in dataset:
-        input_ids = tokenizer.tokenize(prompt)
-        labels = midi_tokens
+    for prompt, midi_data in dataset:
+        input_ids = prompt_tokenizer.tokenize(prompt)
+        labels = midi_tokenizer.tokenize(midi_data)
         tokenized_dataset.append({"input_ids": input_ids, "labels": labels})
     
     # Split the dataset into train and validation sets
@@ -28,8 +43,8 @@ def main():
     val_dataset = tokenized_dataset[train_size:]
     
     # Create data loaders
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=8, shuffle=True)
-    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=8)
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=8, shuffle=True, collate_fn=collate_fn)
+    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=8, collate_fn=collate_fn)
     
     # Initialize the MusicBART model
     model = MusicBART()
@@ -51,7 +66,7 @@ def main():
     for _ in range(num_samples):
         prompt = "Sample prompt"
         generated_sequence = trained_model.generate(prompt)
-        generated_midi = sequence_to_midi(generated_sequence)
+        generated_midi = midi_tokenizer.detokenize(generated_sequence)
         evaluate_midi(generated_midi)
     
     # Evaluate the model on the validation set using evaluation metrics
