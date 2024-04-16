@@ -29,10 +29,16 @@ def main():
     
     # Tokenize the dataset
     tokenized_dataset = []
+    tokenized_dataset = []
     for prompt, midi_data in dataset:
         input_ids = prompt_tokenizer.tokenize(prompt)
         labels = midi_tokenizer.tokenize(midi_data)
         tokenized_dataset.append({"input_ids": input_ids, "labels": labels})
+        #print(f"Prompt: {prompt}")
+        #print(f"Input IDs: {input_ids}")
+        #print(f"MIDI Data: {midi_data}")
+        #print(f"Labels: {labels}")
+        #print("---")
     
     # Split the dataset into train and validation sets
     train_size = int(0.8 * len(tokenized_dataset))
@@ -40,16 +46,16 @@ def main():
     val_dataset = tokenized_dataset[train_size:]
     
     # Create data loaders
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=8, shuffle=True, collate_fn=lambda batch: collate_fn(batch, device))
-    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=8, collate_fn=lambda batch: collate_fn(batch, device))
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=16, shuffle=True, collate_fn=lambda batch: collate_fn(batch, device))
+    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=16, collate_fn=lambda batch: collate_fn(batch, device))
     
     # Initialize the MusicBART model
     model = MusicBART().to(device)
     
     # Set the training parameters
-    epochs = 10
-    batch_size = 8
-    learning_rate = 1e-4
+    epochs = 50
+    batch_size = 32
+    learning_rate = 1e-5
     
     # Train the model
     trained_model = train(model, train_loader, epochs, batch_size, learning_rate, device)
@@ -66,13 +72,12 @@ def main():
         prompt_tensor = torch.tensor(prompt_tokenizer.tokenize(prompt)).to(device)
         # Add batch dimension to prompt_tensor
         prompt_tensor = prompt_tensor.unsqueeze(0)
-
         # Generate the attention mask for the prompt tensor
         attention_mask = torch.ones(prompt_tensor.shape, dtype=torch.long, device=device)
 
         # Generate the sequence
         generated_sequence = trained_model.generate(prompt_tensor, attention_mask)
-        evaluate_midi(generated_sequence)
+        #evaluate_midi(generated_sequence)
     
     # Evaluate the model on the validation set using evaluation metrics
     evaluate_model(trained_model, val_loader, device)

@@ -1,11 +1,11 @@
 # tokenizer.py
 
 import re
-from transformers import BertTokenizer
+from transformers import BartTokenizer
 
 class PromptTokenizer:
     def __init__(self):
-        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+        self.tokenizer = BartTokenizer.from_pretrained("facebook/bart-large")
 
     def tokenize(self, prompt):
         # Tokenize the prompt text
@@ -71,7 +71,6 @@ class MidiTokenizer:
         if isinstance(midi_notation, list):
             midi_notation = ' '.join(midi_notation)
 
-        print(f"MIDI notation: {midi_notation}")
         tokens = []
         i = 0
         while i < len(midi_notation):
@@ -108,7 +107,6 @@ class MidiTokenizer:
                 i += 1
 
         token_ids = [self.token_to_id[token] for token in tokens if token in self.token_to_id]
-        print(f"Token IDs: {token_ids}")
         return token_ids
 
     def detokenize(self, token_ids):

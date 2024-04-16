@@ -1,17 +1,5 @@
 [
   {
-    "prompt": "Generate kitchen girl song",
-    "midi":  "X:1\nM:C\nK:D\n[a4c4] [g4B4]|efed c2cd|e2f2 gaba|g2e2 e2fg|\na4 g4|efed cdef|g2d2 efed|c2A2 A4:|\nK:G\nABcA BAGB|ABAG EDEG|A2AB c2d2|e3f edcB|\nABcA BAGB|ABAG EGAB|cBAc BAG2|A4 A4:|"
-  },
-  {
-    "prompt": "Generate an uplifting melody for a graduation ceremony",
-    "midi": "X:1\nM:3/4\nK:G\nB>cd BAG|FA Ac BA|B>cd BAG|DG GB AG:|\nBdd gfg|aA Ac BA|Bdd gfa|gG GB AG:|\nBG G/2G/2G BG|FA Ac BA|BG G/2G/2G BG|DG GB AG:|"
-  },
-  {
-    "prompt": "Generate a suspenseful tune for a mystery movie trailer",
-    "midi": "X:1\nK:G\nD|GFG GAG G2D|GFG GAG F2D|EFE EFE EFG|A2G F2E D2:|\nD|GAG GAB d2D|GAG GAB c2D|[1 EFE EFE EFG|A2G F2E D2:|\nM:12/8\n[2 E2E EFE E2E EFG|\nM:9/8\nA2G F2E D2|]"
-  },
-  {
     "prompt": "Generate a melody for a romantic scene in a movie",
     "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|"
   },
@@ -174,5 +162,97 @@
   {
     "prompt": "Generate a melody for an epic fantasy movie trailer",
     "midi": "X:1\nM:4/4\nK:Dm\nD2 F2 A2 d2|c2 A2 F2 D2|G2 A2 Bb2 C2|D4 D4:|\\nd2 f2 a2 d'2|c'2 a2 f2 d2|g2 a2 bb2 c'2|d'4 d'4:|"
+  },
+  {
+    "prompt": "Generate a lively Irish jig",
+    "midi": "X:1\nM:6/8\nK:D\nA|d2A BAF|ABA AFD|E2A ABc|ded cBA|\nd2A BAF|ABA AFD|G2B AFD|1 E2D D2:|2 E2D D2|]"
+  },
+  {
+    "prompt": "Generate a soothing lullaby melody",
+    "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|d2c B2A|\nG2G G2A|B2B B2c|d2d d2c|B2A G2:|]"
+  },
+  {
+    "prompt": "Generate an energetic polka tune",
+    "midi": "X:1\nM:2/4\nK:F\nC2|F2 A2|c2 A2|G2 F2|E2 C2|\nF2 A2|c2 A2|G2 F2|F2:|]"
+  },
+  {
+    "prompt": "Generate a melancholic melody for a sad scene",
+    "midi": "X:1\nM:4/4\nK:Dm\nA2|d2 e2 f2 d2|c2 d2 A2 G2|F2 G2 A2 F2|G4 D2 A2|\nd2 e2 f2 d2|c2 d2 A2 G2|F2 E2 D2 C2|D4 D2:|]"
+  },
+  {
+    "prompt": "Generate a cheerful melody for a children's song",
+    "midi": "X:1\nM:4/4\nK:C\nC2|G2 E2 C2 G,2|A,2 G,2 C2 E2|F2 D2 B,2 D2|C4 C2:|]"
+  },
+  {
+    "prompt": "Generate a regal melody for a royal procession",
+    "midi": "X:1\nM:4/4\nK:D\nA2|d2 f2 a2 f2|g2 e2 c2 e2|d2 f2 a2 f2|e4 d2:|]"
+  },
+  {
+    "prompt": "Generate a lively klezmer tune",
+    "midi": "X:1\nM:2/4\nK:Dm\nA2|d2 e2|f2 d2|c2 A2|d4|\nd2 e2|f2 d2|c2 A2|A2 G2|\nF2 G2|A2 Bc|d4|d2:|]"
+  },
+  {
+    "prompt": "Generate a mysterious melody for a fantasy game",
+    "midi": "X:1\nM:6/8\nK:Em\nB|e2e efe|d2d cdc|B2B ABA|G2E E2B|\ne2e efe|d2d cdc|B2B ABA|B2E E2:|]"
+  },
+  {
+    "prompt": "Generate a triumphant melody for a hero's theme",
+    "midi": "X:1\nM:4/4\nK:C\nG2|c2 e2 g2 e2|d2 c2 B2 G2|A2 c2 e2 c2|G4 G2:|]"
+  },
+  {
+    "prompt": "Generate a playful melody for a cartoon theme song",
+    "midi": "X:1\nM:2/4\nK:F\nC2|F2 A2|c2 A2|G2 F2|E2 C2|\nF2 A2|c2 A2|G2 F2|F2:|]"
+  },
+  {
+    "prompt": "Generate a wistful melody for a nostalgic scene",
+    "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|d2c B2A|\nG2G G2A|B2B B2c|d2d d2c|B2A G2:|]"
+  },
+  {
+    "prompt": "Generate an upbeat melody for a party scene",
+    "midi": "X:1\nM:4/4\nK:C\nC2|G2 E2 C2 G,2|A,2 G,2 C2 E2|F2 D2 B,2 D2|C4 C2:|]"
+  },
+  {
+    "prompt": "Generate a gentle melody for a wedding processional",
+    "midi": "X:1\nM:3/4\nK:D\nA|d2d e2f|g2g f2e|d2d c2d|e4 A2|\nd2d e2f|g2g f2e|d2d c2B|A4 A2:|]"
+  },
+  {
+    "prompt": "Generate a haunting melody for a ghost story",
+    "midi": "X:1\nM:4/4\nK:Am\nA2|c2 e2 a2 e2|d2 c2 B2 G2|A2 c2 e2 c2|B4 A2:|]"
+  },
+  {
+    "prompt": "Generate a patriotic melody for a national anthem",
+    "midi": "X:1\nM:4/4\nK:G\nD2|G2 B2 d2 B2|c2 A2 F2 A2|G2 B2 d2 B2|A4 G2:|]"
+  },
+  {
+    "prompt": "Generate a whimsical melody for a fairy tale",
+    "midi": "X:1\nM:6/8\nK:D\nA|d2d efe|d2d cBA|B2B cde|d2A A2A|\nd2d efe|d2d cBA|B2B cde|d2A A2:|]"
+  },
+  {
+    "prompt": "Generate a suspenseful melody for a thriller movie",
+    "midi": "X:1\nM:4/4\nK:Cm\nG2|c2 eb2 g2|f2 d2 bb2 d2|c2 eb2 g2|g4 c2:|]"
+  },
+  {
+    "prompt": "Generate a serene melody for a nature documentary",
+    "midi": "X:1\nM:3/4\nK:F\nC|F2F G2A|B2B A2G|F2F E2F|G4 C2|\nF2F G2A|B2B A2G|F2F E2D|C4 C2:|]"
+  },
+  {
+    "prompt": "Generate an adventurous melody for an action movie",
+    "midi": "X:1\nM:4/4\nK:E\nB,2|E2 G2 B2 G2|A2 F2 D2 F2|E2 G2 B2 G2|F4 E2:|]"
+  },
+  {
+    "prompt": "Generate a lively melody for a square dance",
+    "midi": "X:1\nM:4/4\nK:A\nE2|A2 c2 e2 c2|d2 B2 G2 B2|A2 c2 e2 c2|B4 A2:|]"
+  },
+  {
+    "prompt": "Generate kitchen girl song",
+    "midi":  "X:1\nM:C\nK:D\n[a4c4] [g4B4]|efed c2cd|e2f2 gaba|g2e2 e2fg|\na4 g4|efed cdef|g2d2 efed|c2A2 A4:|\nK:G\nABcA BAGB|ABAG EDEG|A2AB c2d2|e3f edcB|\nABcA BAGB|ABAG EGAB|cBAc BAG2|A4 A4:|"
+  },
+  {
+    "prompt": "Generate an uplifting melody for a graduation ceremony",
+    "midi": "X:1\nM:3/4\nK:G\nB>cd BAG|FA Ac BA|B>cd BAG|DG GB AG:|\nBdd gfg|aA Ac BA|Bdd gfa|gG GB AG:|\nBG G/2G/2G BG|FA Ac BA|BG G/2G/2G BG|DG GB AG:|"
+  },
+  {
+    "prompt": "Generate a suspenseful tune for a mystery movie trailer",
+    "midi": "X:1\nK:G\nD|GFG GAG G2D|GFG GAG F2D|EFE EFE EFG|A2G F2E D2:|\nD|GAG GAB d2D|GAG GAB c2D|[1 EFE EFE EFG|A2G F2E D2:|\nM:12/8\n[2 E2E EFE E2E EFG|\nM:9/8\nA2G F2E D2|]"
   }
 ]

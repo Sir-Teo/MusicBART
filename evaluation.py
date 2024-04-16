@@ -3,6 +3,7 @@
 import torch
 import mido
 from io import BytesIO
+from tokenizer import MidiTokenizer
 
 def sequence_to_midi(sequence, tempo=120, ticks_per_beat=480):
     # Create a new MIDI file
@@ -104,6 +105,7 @@ def evaluate_midi(generated_midi):
     
     except Exception as e:
         print("Error evaluating MIDI:", str(e))
+
 
 def evaluate_model(model, dataset, device):
     # Evaluate the model on a given dataset

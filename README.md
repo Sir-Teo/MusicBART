@@ -7,11 +7,7 @@ MusicBART is a project that aims to fine-tune the BART (Bidirectional and Auto-R
 - [Usage](#usage)
 - [Dataset](#dataset)
 - [Model Architecture](#model-architecture)
-- [Evaluation](#evaluation)
-- [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
-
+-
 ## Installation
 
 To install the necessary dependencies for MusicBART, run the following command:
@@ -20,11 +16,10 @@ To install the necessary dependencies for MusicBART, run the following command:
 pip install -r requirements.txt
 ```
 
-Make sure you have Python 3.x installed on your system.
 
 ## Usage
 
-1. Prepare your dataset of prompt-midi pairs and place it in the designated directory.
+1. The dataset is in `data/sample.json`
 
 2. Modify the `dataset_path` variable in `main.py` to point to your dataset directory.
 
@@ -34,7 +29,12 @@ Make sure you have Python 3.x installed on your system.
 python main.py
 ```
 
-4. The generated MIDI files will be saved in the output directory, and the evaluation metrics will be displayed in the console.
+4. The generated MIDI files will be saved in the model directory, run
+
+```
+python test_model.py
+```
+to test some sample prompts.
 
 ## Dataset
 
@@ -46,14 +46,4 @@ MusicBART is based on the BART architecture, which is a transformer-based model 
 
 ## Evaluation
 
-The generated MIDI files are evaluated using several metrics, including:
 
-- Note Density: Measures the average number of notes per unit of time in the generated MIDI file.
-- Pitch Range: Calculates the range of pitches used in the generated MIDI file.
-- Rhythmic Complexity: Assesses the complexity of the rhythmic patterns in the generated MIDI file.
-
-The evaluation metrics provide insights into the quality and characteristics of the generated MIDI files.
-
-## Results
-
-The performance of MusicBART is evaluated on a validation set using the defined evaluation metrics. The average values of the metrics are reported to assess the overall quality of the generated MIDI files.

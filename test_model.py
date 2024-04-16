@@ -13,7 +13,14 @@ def generate_midi(model, prompt, prompt_tokenizer, device):
     prompt_tensor = torch.tensor(prompt_tokenizer.tokenize(prompt)).to(device)
     prompt_tensor = prompt_tensor.unsqueeze(0)
     attention_mask = torch.ones(prompt_tensor.shape, dtype=torch.long, device=device)
-    generated_sequence = model.generate(prompt_tensor, attention_mask)
+    
+    generated_sequence = model.generate(
+        prompt_tensor,
+        attention_mask,
+        num_beams=4,
+        max_length=1024,  # Increase the maximum length of the generated sequence
+    )
+    
     return generated_sequence
 
 def main():
@@ -25,9 +32,10 @@ def main():
     midi_tokenizer = MidiTokenizer()
 
     prompts = [
-        "Generate a happy and upbeat melody",
-        "Generate a sad and melancholic piano piece",
-        "Generate an epic orchestral theme",
+        "Generate a happy and upbeat melody, very happy",
+        "Generate an epic orchestral theme, very epic",
+        "Generate a relaxing jazz tune, very relaxing",
+        "Generate a spooky and mysterious melody, very spooky",
     ]
 
     for prompt in prompts:
