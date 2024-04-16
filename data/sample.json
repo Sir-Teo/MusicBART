@@ -1,26 +1,178 @@
 [
-    {
-      "prompt": "Generate kitchen girl song",
-      "midi":  "X:1\nM:C\nK:D\n[a4c4] [g4B4]|efed c2cd|e2f2 gaba|g2e2 e2fg|\na4 g4|efed cdef|g2d2 efed|c2A2 A4:|\nK:G\nABcA BAGB|ABAG EDEG|A2AB c2d2|e3f edcB|\nABcA BAGB|ABAG EGAB|cBAc BAG2|A4 A4:|"
-    },
-    {
-      "prompt": "Generate an uplifting melody for a graduation ceremony",
-      "midi": "X:1\nM:3/4\nK:G\nB>cd BAG|FA Ac BA|B>cd BAG|DG GB AG:|\nBdd gfg|aA Ac BA|Bdd gfa|gG GB AG:|\nBG G/2G/2G BG|FA Ac BA|BG G/2G/2G BG|DG GB AG:|"
-    },
-    {
-      "prompt": "Generate a suspenseful tune for a mystery movie trailer",
-      "midi": "X:1\nK:G\nD|GFG GAG G2D|GFG GAG F2D|EFE EFE EFG|A2G F2E D2:|\nD|GAG GAB d2D|GAG GAB c2D|[1 EFE EFE EFG|A2G F2E D2:|\nM:12/8\n[2 E2E EFE E2E EFG|\nM:9/8\nA2G F2E D2|]"
-    },
-    {
-      "prompt": "Generate a melody for a romantic scene in a movie",
-      "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|"
-    },
-    {
-      "prompt": "Generate a melody for a romantic scene in a movie",
-      "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|"
-    },
-    {
-      "prompt": "Generate a melody for a romantic scene in a movie",
-      "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B"
-    }
-  ]
+  {
+    "prompt": "Generate kitchen girl song",
+    "midi":  "X:1\nM:C\nK:D\n[a4c4] [g4B4]|efed c2cd|e2f2 gaba|g2e2 e2fg|\na4 g4|efed cdef|g2d2 efed|c2A2 A4:|\nK:G\nABcA BAGB|ABAG EDEG|A2AB c2d2|e3f edcB|\nABcA BAGB|ABAG EGAB|cBAc BAG2|A4 A4:|"
+  },
+  {
+    "prompt": "Generate an uplifting melody for a graduation ceremony",
+    "midi": "X:1\nM:3/4\nK:G\nB>cd BAG|FA Ac BA|B>cd BAG|DG GB AG:|\nBdd gfg|aA Ac BA|Bdd gfa|gG GB AG:|\nBG G/2G/2G BG|FA Ac BA|BG G/2G/2G BG|DG GB AG:|"
+  },
+  {
+    "prompt": "Generate a suspenseful tune for a mystery movie trailer",
+    "midi": "X:1\nK:G\nD|GFG GAG G2D|GFG GAG F2D|EFE EFE EFG|A2G F2E D2:|\nD|GAG GAB d2D|GAG GAB c2D|[1 EFE EFE EFG|A2G F2E D2:|\nM:12/8\n[2 E2E EFE E2E EFG|\nM:9/8\nA2G F2E D2|]"
+  },
+  {
+    "prompt": "Generate a melody for a romantic scene in a movie",
+    "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|"
+  },
+  {
+    "prompt": "Generate a lullaby for a baby",
+    "midi": "X:1\nM:6/8\nK:C\nC|EFE G2G|F2F E2D|C2C G2G|A2A G2:|\\nE|F2F A2A|G2G F2E|F2F D2D|E2E D2C|C3 C3:|"
+  },
+  {
+    "prompt": "Generate a melody for a superhero theme song",
+    "midi": "X:1\nM:4/4\nK:C\nC2 E2 G2 c2|d4 d4|e2 d2 c2 G2|c4 G4|\\nA2 F2 A2 c2|d4 d4|e2 d2 c2 G2|c4 c4:|"
+  },
+  {
+    "prompt": "Generate a melody for a nature documentary",
+    "midi": "X:1\nM:4/4\nK:D\nA,2 D2 F2 A2|Bc de f2 ed|c2 A2 F2 D2|A,4 D4:|\\nA2 d2 f2 a2|gf ed c2 BA|G2 E2 C2 A,2|D4 D4:|"
+  },
+  {
+    "prompt": "Generate a melody for a kids' TV show theme song",
+    "midi": "X:1\nM:4/4\nK:G\nD|G2 G2 A2 B2|c2 B2 A2 G2|A2 A2 B2 c2|d4 d4|\\ne2 e2 d2 c2|B2 A2 G2 F2|E2 F2 G2 A2|G4 G4:|"
+  },
+  {
+    "prompt": "Generate a melody for a sci-fi video game",
+    "midi": "X:1\nM:4/4\nK:Em\nE2 F2 G2 A2|B4 B4|c2 B2 A2 G2|F4 E4|\\nD2 E2 F2 G2|A4 A4|B2 A2 G2 F2|E4 E4:|"
+  },
+  {
+    "prompt": "Generate a melody for a fantasy movie trailer",
+    "midi": "X:1\nM:3/4\nK:D\nA|d2d d2e|f2f f2g|a2a a2f|e2d d2:|\\nA|d2f a2d|c2e g2c|B2d f2B|A2F D2:|"
+  },
+  {
+    "prompt": "Generate a melody for a sports highlight reel",
+    "midi": "X:1\nM:4/4\nK:A\nA2 c2 e2 a2|g2 f2 e2 c2|d2 B2 G2 E2|A4 A4:|\\nc2 e2 a2 c'2|b2 a2 g2 e2|f2 d2 B2 G2|A4 A4:|"
+  },
+  {
+    "prompt": "Generate a melody for a cooking show",
+    "midi": "X:1\nM:4/4\nK:F\nF2 A2 c2 f2|e2 d2 c2 A2|d2 B2 G2 E2|F4 F4:|\\nf2 a2 c'2 f'2|e'2 d'2 c'2 a2|g2 e2 c2 A2|F4 F4:|"
+  },
+  {
+    "prompt": "Generate a melody for a travel vlog",
+    "midi": "X:1\nM:4/4\nK:G\nG2 B2 d2 g2|f2 e2 d2 B2|c2 A2 F2 D2|G4 G4:|\\ng2 b2 d'2 g'2|f'2 e'2 d'2 b2|a2 f2 d2 B2|G4 G4:|"
+  },
+  {
+    "prompt": "Generate an uplifting melody for a wedding video",
+    "midi": "X:1\nM:3/4\nK:D\\nD|F2A d2d|c2B A2G|F2A d2d|e2d d2:|\\nA|d2f a2a|g2f e2d|c2e g2g|f2e d2:|"
+  },
+  {
+    "prompt": "Generate a catchy tune for a product commercial",
+    "midi": "X:1\nM:4/4\nK:C\nC2 E2 G2 C2|D4 D4|E2 C2 G,2 E,2|G,4 C,4:|\\nE2 G2 c2 e2|d4 d4|e2 c2 G2 E2|C4 C4:|"
+  },
+  {
+    "prompt": "Generate a melody for a wildlife documentary",
+    "midi": "X:1\nM:3/4\nK:G\nD|G2B d2d|g2g d2B|e2e B2G|D4 D2:|\\nB|d2d g2g|b2b d'2b|a2a e2c|B4 G2:|"
+  },
+  {
+    "prompt": "Generate a melody for an educational video",
+    "midi": "X:1\nM:4/4\nK:F\nF2 G2 A2 c2|d4 d4|c2 A2 F2 D2|C4 F4:|\\nc2 d2 e2 g2|a4 a4|g2 e2 c2 A2|F4 F4:|"
+  },
+  {
+    "prompt": "Generate a melody for a fashion show",
+    "midi": "X:1\nM:4/4\nK:Dm\nD2 F2 A2 d2|c2 B2 A2 F2|E2 C2 A,2 F,2|D4 D4:|\\nd2 f2 a2 d'2|c'2 b2 a2 f2|g2 e2 c2 A2|D4 D4:|"
+  },
+  {
+    "prompt": "Generate a cheerful melody for a birthday video",
+    "midi": "X:1\nM:4/4\nK:G\nG2 B2 d2 g2|a2 g2 f2 d2|e2 c2 A2 F2|G4 G4:|\\ng2 b2 d'2 g'2|a'2 g'2 f'2 d'2|e'2 c'2 a2 f2|g4 g4:|"
+  },
+  {
+    "prompt": "Generate a melody for a yoga tutorial",
+    "midi": "X:1\nM:4/4\nK:A\nA,2 C2 E2 A2|B2 A2 G2 E2|F2 D2 B,2 G,2|A,4 A,4:|\\nA2 c2 e2 a2|b2 a2 g2 e2|f2 d2 B2 G2|A4 A4:|"
+  },
+  {
+    "prompt": "Generate a melody for a space exploration game",
+    "midi": "X:1\nM:4/4\nK:Em\nE2 G2 B2 e2|d2 c2 B2 G2|A2 F2 D2 B,2|E4 E4:|\\ne2 g2 b2 e'2|d'2 c'2 b2 g2|a2 f2 d2 B2|E4 E4:|"
+  },
+  {
+    "prompt": "Generate a melody for a historical documentary",
+    "midi": "X:1\nM:3/4\nK:Am\nA,|C2E A2A|G2E C2E|F2A d2d|c2A E2:|\\nA|c2e a2a|g2e c2e|f2a d'2d'|c'2a e2:|"
+  },
+  {
+    "prompt": "Generate a melody for a pet grooming tutorial",
+    "midi": "X:1\nM:4/4\nK:D\nD2 F#2 A2 d2|e2 d2 c2 A2|B2 G2 E2 C#2|D4 D4:|\\nd2 f#2 a2 d'2|e'2 d'2 c'2 a2|b2 g2 e2 c#2|d4 d4:|"
+  },
+  {
+    "prompt": "Generate a melody for a motivational speech",
+    "midi": "X:1\nM:4/4\nK:C\nC2 E2 G2 c2|d2 c2 B2 G2|A2 F2 D2 B,2|C4 C4:|\\nc2 e2 g2 c'2|d'2 c'2 b2 g2|a2 f2 d2 B2|c4 c4:|" 
+  },
+  {
+    "prompt": "Generate a melody for a magic show",
+    "midi": "X:1\nM:4/4\nK:Em\nE2 G2 B2 e2|f2 e2 d2 B2|c2 A2 F#2 D2|E4 E4:|\\ne2 g2 b2 e'2|f'2 e'2 d'2 b2|c'2 a2 f#2 d2|e4 e4:|"
+  },
+  {
+    "prompt": "Generate a melody for a beach vacation video",
+    "midi": "X:1\nM:4/4\nK:G\nG2 B2 d2 g2|a2 g2 f2 d2|e2 c2 A2 F#2|G4 G4:|\\ng2 b2 d'2 g'2|a'2 g'2 f'2 d'2|e'2 c'2 a2 f#2|g4 g4:|"
+  },
+  {
+    "prompt": "Generate a melody for a spy thriller movie",
+    "midi": "X:1\nM:4/4\nK:Dm\nD2 F2 A2 d2|c#2 d2 e2 f2|g2 f2 e2 c#2|d4 d4:|\\na2 d'2 f'2 a'2|g'2 f'2 e'2 c#'2|d'2 a2 f2 d2|D4 D4:|"
+  },
+  {
+    "prompt": "Generate a melody for a meditation app",
+    "midi": "X:1\nM:4/4\nK:C\nC2 D2 E2 G2|A2 G2 F2 E2|D2 C2 D2 E2|F4 F4:|\\nE2 F2 G2 A2|C'2 B2 A2 G2|F2 E2 D2 C2|C4 C4:|"
+  },
+  {
+    "prompt": "Generate a melody for a retro arcade game",
+    "midi": "X:1\nM:4/4\nK:F\nF2 A2 C2 F2|G2 F2 E2 C2|D2 B,2 G,2 E,2|F,4 F,4:|\\nF2 A2 c2 f2|g2 f2 e2 c2|d2 B2 G2 E2|F4 F4:|"
+  },
+  {
+    "prompt": "Generate a melody for a final boss battle in a video game",
+    "midi": "X:1\nM:4/4\nK:Dm\nA,2 D2 F2 A2|C2 D2 E2 F2|G2 F2 E2 C2|D4 D4:|\\nA2 d2 f2 a2|c'2 d'2 e'2 f'2|g'2 f'2 e'2 c'2|d'4 d'4:|"
+  },
+  {
+    "prompt": "Generate a melody for a nature time-lapse video",
+    "midi": "X:1\nM:3/4\nK:G\nD|G2B d2d|e2d B2G|A2c e2e|d2B G2:|\\nd|g2b d'2d'|e'2d' b2g|a2c' e'2e'|d'2b g2:|"
+  },
+  {
+    "prompt": "Generate a melody for a Christmas commercial",
+    "midi": "X:1\nM:4/4\nK:C\nC2 E2 G2 c2|G2 A2 B2 c2|F2 G2 A2 B2|C4 C4:|\\nc2 e2 g2 c'2|g2 a2 b2 c'2|f2 g2 a2 b2|c'4 c'4:|"
+  },
+  {
+    "prompt": "Generate a melody for a haunted house attraction",
+    "midi": "X:1\nM:4/4\nK:Am\nA,2 C2 E2 A2|B2 C2 D2 E2|F2 E2 D2 B,2|A,4 A,4:|\\nA2 c2 e2 a2|b2 c'2 d'2 e'2|f'2 e'2 d'2 b2|a4 a4:|"
+  },
+  {
+    "prompt": "Generate a melody for a high-energy workout video",
+    "midi": "X:1\nM:4/4\nK:D\nD2 F#2 A2 d2|e2 d2 c#2 A2|B2 G2 E2 C#2|D4 D4:|\\nd2 f#2 a2 d'2|e'2 d'2 c#'2 a2|b2 g2 e2 c#2|d4 d4:|"
+  },
+  {
+    "prompt": "Generate a melody for a fairy tale animation",
+    "midi": "X:1\nM:3/4\nK:D\nA|d2f# a2a|b2a f#2d|e2g b2b|a2f# d2:|\\nA|d'2a f#2d|e'2b g2e|f#'2d' a2f#|d'4 d'2:|"
+  },
+  {
+    "prompt": "Generate a melody for a racing game soundtrack",
+    "midi": "X:1\nM:4/4\nK:E\nE2 G#2 B2 e2|f#2 e2 d#2 B2|c#2 A2 F#2 D#2|E4 E4:|\\ne2 g#2 b2 e'2|f#'2 e'2 d#'2 b2|c#'2 a2 f#2 d#2|e4 e4:|"
+  },
+  {
+    "prompt": "Generate a melody for a space exploration documentary",
+    "midi": "X:1\nM:4/4\nK:Em\nE2 G2 B2 e2|d2 c2 B2 G2|A2 F#2 D2 B,2|E4 E4:|\\ne2 g2 b2 e'2|d'2 c'2 b2 g2|a2 f#2 d2 B2|e4 e4:|"
+  },
+  {
+    "prompt": "Generate a melody for a cooking competition show",
+    "midi": "X:1\nM:4/4\nK:F\nF2 A2 C2 F2|G2 A2 Bb2 C2|D2 C2 Bb2 G2|F4 F4:|\\nF2 A2 c2 f2|g2 a2 bb2 c'2|d'2 c'2 bb2 g2|f4 f4:|"
+  },
+  {
+    "prompt": "Generate a melody for a superhero action sequence",
+    "midi": "X:1\nM:4/4\nK:Dm\nD2 F2 A2 d2|e2 d2 c#2 A2|Bb2 G2 E2 C#2|D4 D4:|\\nd2 f2 a2 d'2|e'2 d'2 c#'2 a2|bb2 g2 e2 c#2|d4 d4:|"
+  },
+  {
+    "prompt": "Generate a melody for a fantasy RPG town theme",
+    "midi": "X:1\nM:3/4\nK:G\nD|G2B d2d|g2d B2G|A2c e2e|d2B G2:|\\nD|g2b d'2d'|a'2d' b2g|e'2c' a2e|d'4 g2:|"
+  },
+  {
+    "prompt": "Generate a melody for a relaxing spa ambience",
+    "midi": "X:1\nM:4/4\nK:C\nC2 E2 G2 C2|D2 E2 F2 G2|A2 G2 F2 D2|C4 C4:|\\nC2 E2 G2 c2|d2 e2 f2 g2|a2 g2 f2 d2|c4 c4:|"
+  },
+  {
+    "prompt": "Generate a melody for a Western movie theme",
+    "midi": "X:1\nM:4/4\nK:Am\nA,2 C2 E2 A2|G2 E2 C2 A,2|D2 E2 F2 G2|A4 A4:|\\nA2 c2 e2 a2|g2 e2 c2 A2|d2 e2 f2 g2|a4 a4:|"
+  },
+  {
+    "prompt": "Generate a melody for a tropical beach resort commercial",
+    "midi": "X:1\nM:4/4\nK:G\nG2 B2 D2 G2|A2 B2 C2 D2|E2 D2 C2 A,2|G,4 G,4:|\\nG2 B2 d2 g2|a2 b2 c'2 d'2|e'2 d'2 c'2 a2|g4 g4:|"
+  },
+  {
+    "prompt": "Generate a melody for an epic fantasy movie trailer",
+    "midi": "X:1\nM:4/4\nK:Dm\nD2 F2 A2 d2|c2 A2 F2 D2|G2 A2 Bb2 C2|D4 D4:|\\nd2 f2 a2 d'2|c'2 a2 f2 d2|g2 a2 bb2 c'2|d'4 d'4:|"
+  }
+]
