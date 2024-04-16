@@ -10,5 +10,17 @@
     {
       "prompt": "Generate a suspenseful tune for a mystery movie trailer",
       "midi": "X:1\nK:G\nD|GFG GAG G2D|GFG GAG F2D|EFE EFE EFG|A2G F2E D2:|\nD|GAG GAB d2D|GAG GAB c2D|[1 EFE EFE EFG|A2G F2E D2:|\nM:12/8\n[2 E2E EFE E2E EFG|\nM:9/8\nA2G F2E D2|]"
+    },
+    {
+      "prompt": "Generate a melody for a romantic scene in a movie",
+      "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|"
+    },
+    {
+      "prompt": "Generate a melody for a romantic scene in a movie",
+      "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|"
+    },
+    {
+      "prompt": "Generate a melody for a romantic scene in a movie",
+      "midi": "X:1\nM:3/4\nK:G\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B B2A|G2G G2:|\nD|G2G G2A|B2B B2c|d2d d2e|f2f f2g|\na2a a2g|f2f f2e|d2d d2c|B2B"
     }
   ]

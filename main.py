@@ -40,8 +40,8 @@ def main():
     val_dataset = tokenized_dataset[train_size:]
     
     # Create data loaders
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=8, shuffle=True, collate_fn=lambda batch: collate_fn(batch, device))
-    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=8, collate_fn=lambda batch: collate_fn(batch, device))
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=2, shuffle=True, collate_fn=lambda batch: collate_fn(batch, device))
+    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=2, collate_fn=lambda batch: collate_fn(batch, device))
     
     # Initialize the MusicBART model
     model = MusicBART().to(device)
@@ -70,9 +70,8 @@ def main():
 
         # Generate the sequence
         generated_sequence = trained_model.generate(prompt_tensor, attention_mask)
-        generated_midi = midi_tokenizer.detokenize(generated_sequence)
-        print(f"Generated MIDI: {generated_midi}")
-        evaluate_midi(generated_midi)
+        print(f"Generated Sequence: {generated_sequence}")
+        evaluate_midi(generated_sequence)
     
     # Evaluate the model on the validation set using evaluation metrics
     evaluate_model(trained_model, val_loader, device)

@@ -118,6 +118,5 @@ class MidiTokenizer:
                 tokens.append(self.id_to_token[token_id])
             else:
                 tokens.append(f"<UNKNOWN_{token_id}>")
-        
-        midi_data = "".join(tokens)
-        return midi_data
+        detokenized_text = "".join(tokens)
+        return detokenized_text

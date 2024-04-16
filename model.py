@@ -3,6 +3,7 @@
 import torch
 import torch.nn as nn
 from transformers import BartForConditionalGeneration, BartTokenizer
+from tokenizer import MidiTokenizer, PromptTokenizer
 
 class MusicBART(nn.Module):
     def __init__(self, model_name="facebook/bart-base", max_length=512):
@@ -22,7 +23,6 @@ class MusicBART(nn.Module):
     
     def generate(self, input_ids, attention_mask, num_beams=4, max_length=512):
         num_beams = int(num_beams)  # Convert num_beams to a scalar value
-        
         outputs = self.model.generate(
             input_ids=input_ids,
             attention_mask=attention_mask,
@@ -30,9 +30,10 @@ class MusicBART(nn.Module):
             max_length=max_length,
             early_stopping=True
         )
-        
-        generated_sequence = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        return generated_sequence
+        generated_sequence = outputs[0].tolist()  # Convert the generated sequence to a list
+        midi_tokenizer = MidiTokenizer()  # Create an instance of MidiTokenizer
+        midi_sequence = midi_tokenizer.detokenize(generated_sequence)  # Use the instance to call detokenize
+        return midi_sequence
 
 def train(model, dataset, epochs, batch_size, learning_rate, device):
     model.to(device)
