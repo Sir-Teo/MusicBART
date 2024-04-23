@@ -32,10 +32,10 @@ def main():
     midi_tokenizer = MidiTokenizer()
 
     prompts = [
-        "Generate a happy and upbeat melody, very happy",
-        "Generate an epic orchestral theme, very epic",
+        "Generate a happy and upbeat melody",
+        "Generate an epic orchestral theme",
         "Generate a relaxing jazz tune, very relaxing",
-        "Generate a spooky and mysterious melody, very spooky",
+        "Generate a spooky and mysterious melody",
     ]
 
     for prompt in prompts:

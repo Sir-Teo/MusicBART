@@ -7,7 +7,6 @@ MusicBART is a project that aims to fine-tune the BART (Bidirectional and Auto-R
 - [Usage](#usage)
 - [Dataset](#dataset)
 - [Model Architecture](#model-architecture)
--
 ## Installation
 
 To install the necessary dependencies for MusicBART, run the following command:
