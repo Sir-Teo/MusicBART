@@ -35,6 +35,15 @@ python test_model.py
 ```
 to test some sample prompts.
 
+5. To use  `data/promp_midi_cropped.json`, first clean the data by running
+
+```
+python clean_data.py
+
+```
+
+```
+
 ## Dataset
 
 The dataset used for training MusicBART should consist of prompt-midi pairs. Each pair should include a text prompt and its corresponding MIDI file in ABC notation. The dataset should be organized in a specific format, with each prompt-midi pair stored in a separate directory.

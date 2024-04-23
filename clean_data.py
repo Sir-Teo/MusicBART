@@ -2,13 +2,17 @@ import json
 
 def crop_midi(midi, max_length):
     if len(midi) > max_length:
-        return midi[:max_length]
+        space_index = midi.rfind(" ", 0, max_length)
+        if space_index != -1:
+            return midi[:space_index]
+        else:
+            return midi[:max_length]
     return midi
 
 def main():
     input_filename = "data/prompt_midi.json"
     output_filename = "data/prompt_midi_cropped.json"
-    max_midi_length = 1024  # Specify the maximum length for MIDI strings
+    max_midi_length = 512  # Specify the maximum length for MIDI strings
 
     with open(input_filename, "r") as file:
         data = json.load(file)
@@ -22,13 +26,10 @@ def main():
     for entry in data:
         prompt_length = len(entry["prompt"])
         midi_length = len(entry["midi"])
-
         max_prompt_length = max(max_prompt_length, prompt_length)
         max_midi_length_found = max(max_midi_length_found, midi_length)
-
         total_prompt_length += prompt_length
         total_midi_length += midi_length
-
         entry["midi"] = crop_midi(entry["midi"], max_midi_length)
 
     avg_prompt_length = total_prompt_length / num_entries
@@ -44,7 +45,7 @@ def main():
     with open(output_filename, "w") as file:
         json.dump(data, file, indent=2)
 
-    print(f"\nMIDI strings exceeding {max_midi_length} characters have been cropped.")
+    print(f"\nMIDI strings exceeding {max_midi_length} characters have been cropped at the nearest space.")
     print(f"Modified JSON data has been saved to {output_filename}.")
 
 if __name__ == "__main__":

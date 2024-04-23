@@ -1,9 +1,10 @@
 # main.py
 from data_preprocessing import preprocess_data, load_dataset
 from tokenizer import PromptTokenizer, MidiTokenizer
-from model import MusicBART, train, evaluate
+from model import MusicBART, train, evaluate, MusicGPT
 from evaluation import evaluate_model, evaluate_midi
 import torch
+import argparse
 
 
 def collate_fn(batch, device):
@@ -28,7 +29,10 @@ def main():
     prompt_tokenizer = PromptTokenizer()
     midi_tokenizer = MidiTokenizer()
     # Initialize the MusicBART model
-    model = MusicBART().to(device)
+    if args.model_name == "bart":
+        model = MusicBART().to(device)
+    elif args.model_name == "gpt":
+        model = MusicGPT().to(device)
     
     # Tokenize the dataset
     tokenized_dataset = []
@@ -85,4 +89,10 @@ def main():
     evaluate_model(trained_model, val_loader, device)
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Train and evaluate the MusicBART model")
+    parser.add_argument("--model_name", type=str, default="bart", help="Pretrained model name")
+    parser.add_argument("--epochs", type=int, default=100, help="Number of epochs for training")
+    parser.add_argument("--batch_size", type=int, default=8, help="Batch size for training")
+    parser.add_argument("--learning_rate", type=float, default=1e-5, help="Learning rate for training")
+    args = parser.parse_args()
     main()

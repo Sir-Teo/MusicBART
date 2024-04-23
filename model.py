@@ -2,11 +2,42 @@
 
 import torch
 import torch.nn as nn
-from transformers import BartForConditionalGeneration, BartTokenizer
+from transformers import BartForConditionalGeneration, BartTokenizer, GPT2LMHeadModel, GPT2Tokenizer
 from tokenizer import MidiTokenizer, PromptTokenizer
 
+class MusicGPT(nn.Module):
+    def __init__(self, model_name="gpt2", max_length=1024):
+        super(MusicGPT, self).__init__()
+        self.model = GPT2LMHeadModel.from_pretrained(model_name)
+        self.tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+        self.max_length = max_length
+    
+    def forward(self, input_ids, attention_mask, labels=None):
+        outputs = self.model(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            labels=labels,
+            return_dict=True
+        )
+        
+        return outputs
+    
+    def generate(self, input_ids, attention_mask, num_beams=8, max_length=1024):
+        num_beams = int(num_beams)  # Convert num_beams to a scalar value
+        outputs = self.model.generate(
+        input_ids=input_ids,
+        max_length=max_length,
+        attention_mask=attention_mask,
+        num_beams=num_beams,
+        ) 
+        generated_sequence = outputs[0].tolist()  # Convert the generated sequence to a list
+        midi_tokenizer = MidiTokenizer()  # Create an instance of MidiTokenizer
+        midi_sequence = midi_tokenizer.detokenize(generated_sequence)  # Use the instance to call detokenize
+        return midi_sequence
+
+
 class MusicBART(nn.Module):
-    def __init__(self, model_name="facebook/bart-large", max_length=4096):
+    def __init__(self, model_name="facebook/bart-large", max_length=1024):
         super(MusicBART, self).__init__()
         self.model = BartForConditionalGeneration.from_pretrained(model_name)
         self.tokenizer = BartTokenizer.from_pretrained(model_name)
@@ -22,7 +53,7 @@ class MusicBART(nn.Module):
         
         return outputs
     
-    def generate(self, input_ids, attention_mask, num_beams=4, max_length=4096):
+    def generate(self, input_ids, attention_mask, num_beams=8, max_length=1024):
         num_beams = int(num_beams)  # Convert num_beams to a scalar value
         outputs = self.model.generate(
         input_ids=input_ids,
