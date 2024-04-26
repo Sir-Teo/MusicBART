@@ -12,7 +12,7 @@ def crop_midi(midi, max_length):
 def main():
     input_filename = "data/prompt_midi.json"
     output_filename = "data/prompt_midi_cropped.json"
-    max_midi_length = 512  # Specify the maximum length for MIDI strings
+    max_midi_length = 128  # Specify the maximum length for MIDI strings
 
     with open(input_filename, "r") as file:
         data = json.load(file)

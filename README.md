@@ -39,10 +39,8 @@ to test some sample prompts.
 
 ```
 python clean_data.py
-
 ```
 
-```
 
 ## Dataset
 
