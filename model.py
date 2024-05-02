@@ -22,7 +22,7 @@ class MusicGPT(nn.Module):
         
         return outputs
     
-    def generate(self, input_ids, attention_mask, num_beams=8, max_length=128):
+    def generate(self, input_ids, attention_mask, num_beams=8, max_length=256):
         num_beams = int(num_beams)  # Convert num_beams to a scalar value
         outputs = self.model.generate(
         input_ids=input_ids,
@@ -37,7 +37,7 @@ class MusicGPT(nn.Module):
 
 
 class MusicBART(nn.Module):
-    def __init__(self, model_name="facebook/bart-large", max_length=128):
+    def __init__(self, model_name="facebook/bart-large", max_length=256):
         super(MusicBART, self).__init__()
         self.model = BartForConditionalGeneration.from_pretrained(model_name)
         self.tokenizer = BartTokenizer.from_pretrained(model_name)
@@ -53,7 +53,7 @@ class MusicBART(nn.Module):
         
         return outputs
     
-    def generate(self, input_ids, attention_mask, num_beams=8, max_length=128):
+    def generate(self, input_ids, attention_mask, num_beams=8, max_length=256):
         num_beams = int(num_beams)  # Convert num_beams to a scalar value
         outputs = self.model.generate(
         input_ids=input_ids,

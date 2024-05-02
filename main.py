@@ -21,7 +21,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     # Preprocess the dataset
-    dataset_path = "data/prompt_midi_cropped.json"
+    dataset_path = "data/prompts_clean.json"
     dataset = load_dataset(dataset_path)
     dataset = preprocess_data(dataset)
     
@@ -59,7 +59,7 @@ def main():
     
     
     # Set the training parameters
-    epochs = 50
+    epochs = 10
     batch_size = 8
     learning_rate = 1e-5
     

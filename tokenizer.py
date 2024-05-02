@@ -5,7 +5,7 @@ from transformers import BartTokenizer
 
 class PromptTokenizer:
     def __init__(self):
-        self.tokenizer = BartTokenizer.from_pretrained("facebook/bart-base")
+        self.tokenizer = BartTokenizer.from_pretrained("facebook/bart-large")
 
     def tokenize(self, prompt):
         # Tokenize the prompt text

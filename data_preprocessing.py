@@ -16,7 +16,7 @@ def preprocess_data(dataset):
     preprocessed_data = []
     for sample in dataset:
         prompt = sample['prompt']
-        midi_text = sample['midi']
+        midi_text = sample['abc_content']
         tokens = tokenize_midi(midi_text)
         preprocessed_data.append((prompt, tokens))
     return preprocessed_data

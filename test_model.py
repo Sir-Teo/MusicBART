@@ -17,8 +17,8 @@ def generate_midi(model, prompt, prompt_tokenizer, device):
     generated_sequence = model.generate(
         prompt_tensor,
         attention_mask,
-        num_beams=2,
-        max_length=128,  # Increase the maximum length of the generated sequence
+        num_beams=3,
+        max_length=256,  # Increase the maximum length of the generated sequence
     )
     
     return generated_sequence
