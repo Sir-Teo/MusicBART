@@ -1,7 +1,6 @@
 # main_parallel.py
 # the script to run this is 
-# torchrun --nproc_per_node=2 main_parallel.py --model_name bart --epochs 100 --batch_size 8 --learning_rate 1e-5
-
+# torchrun --nproc_per_node=2 main_parallel.py --model_name bart --epochs 10 --batch_size 8 --learning_rate 1e-5
 import torch
 import os
 import argparse
@@ -28,6 +27,7 @@ def log_memory_usage():
 
 def main():
     # Get the local rank from the environment variable
+    local_rank = int(os.environ['LOCAL_RANK'])
 
     # Initialize the distributed environment
     dist.init_process_group(backend='nccl', init_method='env://')

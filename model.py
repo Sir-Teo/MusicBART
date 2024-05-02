@@ -66,31 +66,38 @@ class MusicBART(nn.Module):
         midi_sequence = midi_tokenizer.detokenize(generated_sequence)  # Use the instance to call detokenize
         return midi_sequence
 
-def train(model, train_loader, epochs, batch_size, learning_rate, device):
+def train(model, train_loader, epochs, batch_size, learning_rate, device, accumulation_steps=1):
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     model.train()
+    total_loss = 0
     for epoch in range(epochs):
-        for batch in train_loader:
-            input_ids = batch['input_ids']
-            attention_mask = batch['attention_mask']
-            labels = batch['labels']
+        for batch_idx, batch in enumerate(train_loader):
+            input_ids = batch['input_ids'].to(device)
+            attention_mask = batch['attention_mask'].to(device)
+            labels = batch['labels'].to(device)
 
-            outputs = model(input_ids, attention_mask, labels=labels)
+            outputs = model(input_ids, attention_mask=attention_mask, labels=labels)
             loss = outputs.loss
+            loss = loss / accumulation_steps  # Normalize the loss to account for accumulation
+            loss.backward()
 
+            if (batch_idx + 1) % accumulation_steps == 0:  # Perform optimization at the defined accumulation step
+                optimizer.step()
+                optimizer.zero_grad()  # Clear gradients after updating weights
 
-            total_loss = 0
             total_loss += loss.item()
 
-            loss.backward()
-            optimizer.step()
-            optimizer.zero_grad()
+            # Optional: Clear unused memory to avoid fragmentation
+            if batch_idx % 10 == 0:  # Every 10 batches
+                torch.cuda.empty_cache()
 
         avg_loss = total_loss / len(train_loader)
         print(f"Epoch [{epoch+1}/{epochs}], Average Loss: {avg_loss:.4f}")
+        total_loss = 0  # Reset total loss after each epoch
 
     model.eval()
     return model
+
 
 def evaluate(model, dataset, device):
     model.to(device)
