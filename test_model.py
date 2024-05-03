@@ -17,7 +17,7 @@ def generate_midi(model, prompt, prompt_tokenizer, device):
     generated_sequence = model.generate(
         prompt_tensor,
         attention_mask,
-        num_beams=3,
+        num_beams=2,
         max_length=256,  # Increase the maximum length of the generated sequence
     )
     
@@ -32,7 +32,7 @@ def main():
     midi_tokenizer = MidiTokenizer()
 
     prompts = [
-        "Generate a happy and upbeat melody",
+        "Compose a piece that evokes a sense of deep sorrow and loneliness. Use minor chords and slow tempo to create a mournful and reflective atmosphere. Try incorporating long, expressive phrases with subtle dynamics to enhance the emotional depth of the melody.",
         "Generate an epic orchestral theme",
         "Generate a relaxing jazz tune, very relaxing",
         "Generate a spooky and mysterious melody",

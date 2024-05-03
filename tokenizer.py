@@ -3,6 +3,7 @@
 import re
 from transformers import BartTokenizer
 
+
 class PromptTokenizer:
     def __init__(self):
         self.tokenizer = BartTokenizer.from_pretrained("facebook/bart-large")
@@ -19,102 +20,40 @@ class PromptTokenizer:
         tokens = self.tokenizer.convert_ids_to_tokens(token_ids)
         prompt = self.tokenizer.convert_tokens_to_string(tokens)
         return prompt
-
+        
 class MidiTokenizer:
     def __init__(self):
+        self.special_tokens = set([
+            '[', ']', '|', '\\n', ':', '::', '/', '(', ')', '{', '}', '!', '+', '-', '*', '"', '%', '$', '<', '>', '\\'
+        ])
         self.token_to_id = {}
         self.id_to_token = {}
         self.vocab_size = 0
-        self.build_vocab()
 
-    def build_vocab(self):
-        tokens = [
-                    'A', 'B', 'C', 'D', 'E', 'F', 'G',  # Uppercase pitch classes
-                    'a', 'b', 'c', 'd', 'e', 'f', 'g',  # Lowercase pitch classes
-                    '^', '_', '=',  # Accidentals (sharp, flat, natural)
-                    ',', '\'',  # Octave modifiers (lower and upper octave)
-                    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',  # Durations
-                    '/', '.',  # Duration modifiers (division and dot)
-                    '(', ')',  # Slurs and ties
-                    '[', ']',  # Chord brackets
-                    '|',  # Barline
-                    ':', '::',  # Repeats
-                    '{', '}',  # Grace note braces
-                    '!', '+', '-', '*',  # Ornaments and articulations
-                    '"',  # Chord symbol quotes
-                    '%', '$',  # Directives and inline fields
-                    '<', '>',  # Dynamics
-                    'V&',  # Voice overlay (pair of tokens)
-                    '\\',  # Escape character
-                    'z',  # Rest
-                    ' ',  # Space
-                    'X:', 'T:', 'C:', 'L:', 'M:', 'Q:', 'P:', 'V:', 'K:',  # Header fields
-                    'w:', 'W:', 'u:', 'U:', 'H:', 'I:', 'J:', 'R:', 'S:', 's:', 'y:', 'Y:', 'Z:',  # Inline fields
-                    
-                    # Key signatures
-                    'C', 'Am', 'G', 'Em', 'D', 'Bm', 'A', 'F#m', 'E', 'C#m', 'B', 'G#m', 'F#', 'D#m',
-                    'C#', 'A#m', 'F', 'Dm', 'Bb', 'Gm', 'Eb', 'Cm', 'Ab', 'Fm', 'Db', 'Bbm', 'Gb', 'Ebm',
-                    
-                    # Chord symbols
-                    'm', 'M', 'maj', 'min', 'dim', 'aug', 'sus2', 'sus4', '7', 'M7', 'maj7', 'm7', 'dim7',
-                    'aug7', 'sus2/7', 'sus4/7', 'add9', 'm7b5', '6', 'm6', 'M9', 'maj9', 'm9', '9', '11',
-                    '13', 'add11', 'add13', '7#5', '7b5', '7#9', '7b9', '7#11', '7b13', 'o', '+', 'ø',
-                    'Δ', 'ᵒ', '⁺', '⁻', 'ᶿ', 'ᵇ', 'ᵍ', 'ʳ', 'ᶜ', 'ᵈ', 'ᵉ', 'ˢ', 'ˡ', 'ʲ', 'ᵐ', 'ⁿ'
-                ]
-        for token in tokens:
-            if token not in self.token_to_id:
-                self.token_to_id[token] = self.vocab_size
-                self.id_to_token[self.vocab_size] = token
-                self.vocab_size += 1
+    def _update_vocab(self, token):
+        if token not in self.token_to_id:
+            self.token_to_id[token] = self.vocab_size
+            self.id_to_token[self.vocab_size] = token
+            self.vocab_size += 1
 
     def tokenize(self, midi_notation):
-        if isinstance(midi_notation, list):
-            midi_notation = ' '.join(midi_notation)
-
-        tokens = []
-        i = 0
-        while i < len(midi_notation):
-            if midi_notation[i] == '\\' and i < len(midi_notation) - 1:
-                if midi_notation[i + 1] == 'n':
-                    tokens.append('\\n')
-                    i += 2
-                else:
-                    tokens.append(midi_notation[i])
-                    i += 1
-            elif midi_notation[i] == '[':
-                j = i + 1
-                while j < len(midi_notation) and midi_notation[j] != ']':
-                    j += 1
-                if j < len(midi_notation):
-                    tokens.extend(['['] + re.findall(r'[A-Ga-g][#b]?\d+|\d+', midi_notation[i + 1:j]) + [']'])
-                    i = j + 1
-                else:
-                    tokens.append(midi_notation[i])
-                    i += 1
-            elif re.match(r'[A-Ga-g][#b]?\d+', midi_notation[i:]):
-                match = re.match(r'[A-Ga-g][#b]?\d+', midi_notation[i:])
-                tokens.extend(re.findall(r'[A-Ga-g][#b]?|\d+', match.group()))
-                i += len(match.group())
-            elif re.match(r'\d+/', midi_notation[i:]):
-                match = re.match(r'\d+/', midi_notation[i:])
-                tokens.extend(re.findall(r'\d+|/', match.group()))
-                i += len(match.group())
-            elif midi_notation[i] == '&':
-                tokens.extend(['V&'])  # Voice overlay as a pair of tokens
-                i += 1
-            else:
-                tokens.append(midi_notation[i])
-                i += 1
-
-        token_ids = [self.token_to_id[token] for token in tokens if token in self.token_to_id]
+        pattern = r'([{}\s])'.format(''.join(re.escape(tok) for tok in self.special_tokens))
+        tokens = [token for token in re.split(pattern, midi_notation) if token]
+        token_ids = []
+        for token in tokens:
+            if token not in self.token_to_id:
+                self._update_vocab(token)
+            token_ids.append(self.token_to_id[token])
         return token_ids
 
     def detokenize(self, token_ids):
-        tokens = []
-        for token_id in token_ids:
-            if token_id in self.id_to_token:
-                tokens.append(self.id_to_token[token_id])
-            else:
-                tokens.append(f"<UNKNOWN_{token_id}>")
-        detokenized_text = "".join(tokens)
-        return detokenized_text
+        tokens = [self.id_to_token[token_id] for token_id in token_ids if token_id in self.id_to_token]
+        return ''.join(tokens).replace('\\n', '\n')
+
+if __name__ == '__main__':
+    tokenizer = MidiTokenizer()
+    sample_text = "X: 1\nM: 4/4\nL: 1/8\nQ:1/4=120\nK:C % 0 sharps\nV:1\n%%clef treble\nzA,- [E-A,]3/2[B-E-]/2 [c-B-E-][e-c-BE-] [g-ec-E-]/2[g-e-cE-]/2[g-e-E-]/2[g-e-c-E-]/2| \\\n[g-e-c-B-E]2 [g-e-c-B-E-]/2[g-e-c-B-EA,-][g-ec-BE-A,-]3/2[g-cB-E-A,-]/2[g-B-E-A,-]/2 [g-c-B-E-A,-]/2[ge-c-B-E-A,-][g-ec-B-E-A,-]/2| \\\n[g-e-c-B-E-A,]/2[g-e-cB-E-]/2[g-e-c-BE-] [g-e-c-B-E]3/2[g-ecBE-][g-E-]/2[gE-C-] [E-C-]/2[G-EC-][A-G-C-]/2| \\\n[c-A-G-C-][e-cA-G-C-C,,-]/2[e-A-G-C-C,,-]/2 [e-c-AG-C-C,,-]/2[e-c-AGC-C,,][e-c-A-G-C]/2"
+    token_ids = tokenizer.tokenize(sample_text)
+    text = tokenizer.detokenize(token_ids)
+    print(token_ids)
+    print(text)

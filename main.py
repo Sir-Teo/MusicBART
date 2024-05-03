@@ -37,9 +37,14 @@ def main():
     # Tokenize the dataset
     tokenized_dataset = []
     tokenized_dataset = []
+    count = 0
     for prompt, midi_data in dataset:
+        if count == 15:
+            break
+        count += 1
         input_ids = prompt_tokenizer.tokenize(prompt)
         labels = midi_tokenizer.tokenize(midi_data)
+        print(labels)
         tokenized_dataset.append({"input_ids": input_ids, "labels": labels})
 
         #print(f"Prompt: {prompt}")

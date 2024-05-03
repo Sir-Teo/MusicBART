@@ -10,7 +10,7 @@ from torch.utils.data import DistributedSampler
 from data_preprocessing import preprocess_data, load_dataset
 from tokenizer import PromptTokenizer, MidiTokenizer
 from model import MusicBART, train, evaluate, MusicGPT
-from evaluation import evaluate_model, evaluate_midi
+from evaluation import evaluate_model
 
 def collate_fn(batch, device):
     input_ids = [torch.tensor(item['input_ids']) for item in batch]
@@ -95,7 +95,7 @@ def main():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train and evaluate the MusicBART model")
     parser.add_argument("--model_name", type=str, default="bart", help="Pretrained model name")
-    parser.add_argument("--epochs", type=int, default=100, help="Number of epochs for training")
+    parser.add_argument("--epochs", type=int, default=20, help="Number of epochs for training")
     parser.add_argument("--batch_size", type=int, default=8, help="Batch size for training")
     parser.add_argument("--learning_rate", type=float, default=1e-5, help="Learning rate for training")
     args = parser.parse_args()

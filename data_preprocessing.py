@@ -1,15 +1,12 @@
 import os
 import numpy as np
-import pretty_midi
 import json
 
-import json
 
 def load_dataset(dataset_path):
     with open(dataset_path, 'r') as f:
         dataset_str = f.read()
     dataset = json.loads(dataset_str)
-    print(f"Type of dataset: {type(dataset)}")  # Debug print statement
     return dataset
 
 def preprocess_data(dataset):
@@ -17,8 +14,7 @@ def preprocess_data(dataset):
     for sample in dataset:
         prompt = sample['prompt']
         midi_text = sample['abc_content']
-        tokens = tokenize_midi(midi_text)
-        preprocessed_data.append((prompt, tokens))
+        preprocessed_data.append((prompt, midi_text))
     return preprocessed_data
 
 
