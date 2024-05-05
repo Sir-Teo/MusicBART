@@ -1,6 +1,4 @@
 # main_parallel.py
-# the script to run this is 
-# torchrun --nproc_per_node=2 main_parallel.py --model_name bart --epochs 10 --batch_size 8 --learning_rate 1e-5
 import torch
 import os
 import argparse
@@ -8,9 +6,8 @@ import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data import DistributedSampler
 from data_preprocessing import preprocess_data, load_dataset
-from tokenizer import PromptTokenizer, MidiTokenizer
 from model import MusicBART, train, evaluate, MusicGPT
-from evaluation import evaluate_model
+from test_model import generate_midi
 
 def collate_fn(batch, device):
     input_ids = [torch.tensor(item['input_ids']) for item in batch]
@@ -44,15 +41,13 @@ def main():
     dataset = preprocess_data(dataset)
     log_memory_usage()
 
-    # Create the tokenizers
-    prompt_tokenizer = PromptTokenizer()
-    midi_tokenizer = MidiTokenizer()
-
     # Initialize the MusicBART model
     if args.model_name == "bart":
         model = MusicBART().to(device)
     elif args.model_name == "gpt":
         model = MusicGPT().to(device)
+    prompt_tokenizer = model.prompt_tokenizer
+    midi_tokenizer = model.midi_tokenizer
     model = DDP(model, device_ids=[local_rank])
 
     # Tokenize the dataset
@@ -80,17 +75,17 @@ def main():
         print(f"Validation Loss: {val_loss:.4f}")
         torch.save(trained_model.module.state_dict(), "./model/trained_model.pth")
 
-        # Generate and evaluate midi files
-        num_samples = 10
-        for _ in range(num_samples):
-            prompt_tensor = torch.tensor(prompt_tokenizer.tokenize(prompt)).to(device)
-            prompt_tensor = prompt_tensor.unsqueeze(0)
-            attention_mask = torch.ones(prompt_tensor.shape, dtype=torch.long, device=device)
-            generated_sequence = trained_model.module.generate(prompt_tensor, attention_mask)
-            # evaluate_midi(generated_sequence)
+        prompts = [
+            "Compose a piece that evokes a sense of deep sorrow and loneliness. Use minor chords and slow tempo to create a mournful and reflective atmosphere. Try incorporating long, expressive phrases with subtle dynamics to enhance the emotional depth of the melody.",
+            "Generate an epic orchestral theme",
+            "Generate a relaxing jazz tune, very relaxing",
+            "Generate a spooky and mysterious melody",
+        ]
 
-        # Further evaluation
-        evaluate_model(trained_model.module, val_loader, device)
+        for prompt in prompts:
+            print(f"Prompt: {prompt}")
+            generated_sequence = generate_midi(model.module, prompt, prompt_tokenizer, device)
+            print(f"Generated sequence: {generated_sequence}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train and evaluate the MusicBART model")

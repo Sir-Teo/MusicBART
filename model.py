@@ -31,8 +31,7 @@ class MusicGPT(nn.Module):
         num_beams=num_beams,
         ) 
         generated_sequence = outputs[0].tolist()  # Convert the generated sequence to a list
-        midi_tokenizer = MidiTokenizer()  # Create an instance of MidiTokenizer
-        midi_sequence = midi_tokenizer.detokenize(generated_sequence)  # Use the instance to call detokenize
+        midi_sequence = self.midi_tokenizer.detokenize(generated_sequence)  # Use the instance to call detokenize
         return midi_sequence
 
 
@@ -40,7 +39,9 @@ class MusicBART(nn.Module):
     def __init__(self, model_name="facebook/bart-large", max_length=256):
         super(MusicBART, self).__init__()
         self.model = BartForConditionalGeneration.from_pretrained(model_name)
-        self.tokenizer = BartTokenizer.from_pretrained(model_name)
+        self.prompt_tokenizer = PromptTokenizer()
+        self.midi_tokenizer = MidiTokenizer()
+
         self.max_length = max_length
     
     def forward(self, input_ids, attention_mask, labels=None):
@@ -62,8 +63,8 @@ class MusicBART(nn.Module):
         num_beams=num_beams,
         ) 
         generated_sequence = outputs[0].tolist()  # Convert the generated sequence to a list
-        midi_tokenizer = MidiTokenizer()  # Create an instance of MidiTokenizer
-        midi_sequence = midi_tokenizer.detokenize(generated_sequence)  # Use the instance to call detokenize
+        print(generated_sequence)
+        midi_sequence = self.midi_tokenizer.detokenize(generated_sequence)  # Use the instance to call detokenize
         return midi_sequence
 
 def train(model, train_loader, epochs, batch_size, learning_rate, device, accumulation_steps=1):

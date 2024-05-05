@@ -1,10 +1,10 @@
 # main.py
 from data_preprocessing import preprocess_data, load_dataset
-from tokenizer import PromptTokenizer, MidiTokenizer
 from model import MusicBART, train, evaluate, MusicGPT
 from evaluation import evaluate_model, evaluate_midi
 import torch
 import argparse
+from test_model import generate_midi
 
 
 def collate_fn(batch, device):
@@ -24,35 +24,28 @@ def main():
     dataset_path = "data/prompts_clean.json"
     dataset = load_dataset(dataset_path)
     dataset = preprocess_data(dataset)
-    
-    # Create the tokenizers
-    prompt_tokenizer = PromptTokenizer()
-    midi_tokenizer = MidiTokenizer()
+
     # Initialize the MusicBART model
     if args.model_name == "bart":
         model = MusicBART().to(device)
     elif args.model_name == "gpt":
         model = MusicGPT().to(device)
+
+    # Create the tokenizers
+    prompt_tokenizer = model.prompt_tokenizer
+    midi_tokenizer = model.midi_tokenizer
     
     # Tokenize the dataset
     tokenized_dataset = []
     tokenized_dataset = []
-    count = 0
     for prompt, midi_data in dataset:
-        if count == 15:
-            break
-        count += 1
+
         input_ids = prompt_tokenizer.tokenize(prompt)
         labels = midi_tokenizer.tokenize(midi_data)
-        print(labels)
         tokenized_dataset.append({"input_ids": input_ids, "labels": labels})
 
-        #print(f"Prompt: {prompt}")
-        #print(f"Input IDs: {input_ids}")
-        #print(f"MIDI Data: {midi_data}")
-        #print(f"Labels: {labels}")
-        #print("---")
-    
+
+
     # Split the dataset into train and validation sets
     train_size = int(0.8 * len(tokenized_dataset))
     train_dataset = tokenized_dataset[:train_size]
@@ -78,20 +71,21 @@ def main():
     torch.save(trained_model.state_dict(), "./model/trained_model.pth")
     
     # Generate and evaluate midi files
-    num_samples = 10
-    for _ in range(num_samples):
-        prompt_tensor = torch.tensor(prompt_tokenizer.tokenize(prompt)).to(device)
-        # Add batch dimension to prompt_tensor
-        prompt_tensor = prompt_tensor.unsqueeze(0)
-        # Generate the attention mask for the prompt tensor
-        attention_mask = torch.ones(prompt_tensor.shape, dtype=torch.long, device=device)
+    prompts = [
+        "Compose a piece that evokes a sense of deep sorrow and loneliness. Use minor chords and slow tempo to create a mournful and reflective atmosphere. Try incorporating long, expressive phrases with subtle dynamics to enhance the emotional depth of the melody.",
+        "Generate an epic orchestral theme",
+        "Generate a relaxing jazz tune, very relaxing",
+        "Generate a spooky and mysterious melody",
+    ]
 
-        # Generate the sequence
-        generated_sequence = trained_model.generate(prompt_tensor, attention_mask)
-        #evaluate_midi(generated_sequence)
+    for prompt in prompts:
+        print(f"Prompt: {prompt}")
+        generated_sequence = generate_midi(model, prompt, prompt_tokenizer, device)
+        print(f"Generated sequence: {generated_sequence}")
+
     
     # Evaluate the model on the validation set using evaluation metrics
-    evaluate_model(trained_model, val_loader, device)
+    # evaluate_model(trained_model, val_loader, device)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train and evaluate the MusicBART model")
