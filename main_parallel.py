@@ -1,4 +1,6 @@
 # main_parallel.py
+# srun --time=3:00:00 --mem=64GB --cpus-per-task=2 --gres=gpu:2 --pty /bin/bash
+# torchrun --nproc_per_node=2 main_parallel.py --model_name bart --epochs 10 --batch_size 6 --learning_rate 1e-5
 import torch
 import os
 import argparse
@@ -77,7 +79,7 @@ def main():
 
         prompts = [
             "Compose a piece that evokes a sense of deep sorrow and loneliness. Use minor chords and slow tempo to create a mournful and reflective atmosphere. Try incorporating long, expressive phrases with subtle dynamics to enhance the emotional depth of the melody.",
-            "Generate an epic orchestral theme",
+            "Craft a piece that builds like a tidal wave, with swelling sound layers that represent a surge of overwhelming emotions",
             "Generate a relaxing jazz tune, very relaxing",
             "Generate a spooky and mysterious melody",
         ]
