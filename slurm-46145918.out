@@ -1,0 +1,121 @@
+[2024-05-06 13:31:13,501] torch.distributed.run: [WARNING] 
+[2024-05-06 13:31:13,501] torch.distributed.run: [WARNING] *****************************************
+[2024-05-06 13:31:13,501] torch.distributed.run: [WARNING] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+[2024-05-06 13:31:13,501] torch.distributed.run: [WARNING] *****************************************
+Allocated memory: 0.0 GB, Cached memory: 0.0 GB
+Allocated memory: 0.0 GB, Cached memory: 0.0 GB
+Epoch [1/50], Average Loss: 2.7245
+Epoch [1/50], Average Loss: 2.7323
+Epoch [2/50], Average Loss: 1.3337
+Epoch [2/50], Average Loss: 1.3395
+Epoch [3/50], Average Loss: 1.0269
+Epoch [3/50], Average Loss: 1.0186
+Epoch [4/50], Average Loss: 0.8733
+Epoch [4/50], Average Loss: 0.8692
+Epoch [5/50], Average Loss: 0.7936
+Epoch [5/50], Average Loss: 0.8021
+Epoch [6/50], Average Loss: 0.7346
+Epoch [6/50], Average Loss: 0.7359
+Epoch [7/50], Average Loss: 0.6896
+Epoch [7/50], Average Loss: 0.6898
+Epoch [8/50], Average Loss: 0.6622
+Epoch [8/50], Average Loss: 0.6653
+Epoch [9/50], Average Loss: 0.6416
+Epoch [9/50], Average Loss: 0.6443
+Epoch [10/50], Average Loss: 0.6238
+Epoch [10/50], Average Loss: 0.6305
+Epoch [11/50], Average Loss: 0.6074
+Epoch [11/50], Average Loss: 0.6137
+Epoch [12/50], Average Loss: 0.5951
+Epoch [12/50], Average Loss: 0.6019
+Epoch [13/50], Average Loss: 0.5824
+Epoch [13/50], Average Loss: 0.5887
+Epoch [14/50], Average Loss: 0.5736
+Epoch [14/50], Average Loss: 0.5799
+Epoch [15/50], Average Loss: 0.5656
+Epoch [15/50], Average Loss: 0.5702
+Epoch [16/50], Average Loss: 0.5568
+Epoch [16/50], Average Loss: 0.5634
+Epoch [17/50], Average Loss: 0.5510
+Epoch [17/50], Average Loss: 0.5556
+Epoch [18/50], Average Loss: 0.5480
+Epoch [18/50], Average Loss: 0.5482
+Epoch [19/50], Average Loss: 0.5366
+Epoch [19/50], Average Loss: 0.5457
+Epoch [20/50], Average Loss: 0.5310
+Epoch [20/50], Average Loss: 0.5356
+Epoch [21/50], Average Loss: 0.5293Epoch [21/50], Average Loss: 0.5246
+
+Epoch [22/50], Average Loss: 0.5194
+Epoch [22/50], Average Loss: 0.5257
+Epoch [23/50], Average Loss: 0.5166
+Epoch [23/50], Average Loss: 0.5228
+Epoch [24/50], Average Loss: 0.5106
+Epoch [24/50], Average Loss: 0.5160
+Epoch [25/50], Average Loss: 0.5056
+Epoch [25/50], Average Loss: 0.5120
+Epoch [26/50], Average Loss: 0.5026
+Epoch [26/50], Average Loss: 0.5080
+Epoch [27/50], Average Loss: 0.4980
+Epoch [27/50], Average Loss: 0.5029
+Epoch [28/50], Average Loss: 0.4948
+Epoch [28/50], Average Loss: 0.4995
+Epoch [29/50], Average Loss: 0.4909
+Epoch [29/50], Average Loss: 0.4956
+Epoch [30/50], Average Loss: 0.4876
+Epoch [30/50], Average Loss: 0.4935
+Epoch [31/50], Average Loss: 0.4843
+Epoch [31/50], Average Loss: 0.4922
+Epoch [32/50], Average Loss: 0.4875
+Epoch [32/50], Average Loss: 0.4909
+Epoch [33/50], Average Loss: 0.4782
+Epoch [33/50], Average Loss: 0.4840
+Epoch [34/50], Average Loss: 0.4749
+Epoch [34/50], Average Loss: 0.4813
+Epoch [35/50], Average Loss: 0.4736
+Epoch [35/50], Average Loss: 0.4844
+Epoch [36/50], Average Loss: 0.4703
+Epoch [36/50], Average Loss: 0.4755
+Epoch [37/50], Average Loss: 0.4668
+Epoch [37/50], Average Loss: 0.4740
+Epoch [38/50], Average Loss: 0.4659
+Epoch [38/50], Average Loss: 0.4710
+Epoch [39/50], Average Loss: 0.4630
+Epoch [39/50], Average Loss: 0.4678
+Epoch [40/50], Average Loss: 0.4686
+Epoch [40/50], Average Loss: 0.4655
+Epoch [41/50], Average Loss: 0.4602
+Epoch [41/50], Average Loss: 0.4657
+Epoch [42/50], Average Loss: 0.4627
+Epoch [42/50], Average Loss: 0.4568
+Epoch [43/50], Average Loss: 0.4559
+Epoch [43/50], Average Loss: 0.4616
+Epoch [44/50], Average Loss: 0.4535
+Epoch [44/50], Average Loss: 0.4598
+Epoch [45/50], Average Loss: 0.4523
+Epoch [45/50], Average Loss: 0.4579
+Epoch [46/50], Average Loss: 0.4501Epoch [46/50], Average Loss: 0.4562
+
+Epoch [47/50], Average Loss: 0.4473Epoch [47/50], Average Loss: 0.4532
+
+Epoch [48/50], Average Loss: 0.4456
+Epoch [48/50], Average Loss: 0.4515
+Epoch [49/50], Average Loss: 0.4427Epoch [49/50], Average Loss: 0.4486
+
+Epoch [50/50], Average Loss: 0.4410Epoch [50/50], Average Loss: 0.4473
+
+Evaluation Loss: 0.4675
+Validation Loss: 0.4675
+Evaluation Loss: 0.4528
+Prompt: Compose a piece that evokes a sense of deep sorrow and loneliness. Use minor chords and slow tempo to create a mournful and reflective atmosphere. Try incorporating long, expressive phrases with subtle dynamics to enhance the emotional depth of the melody.
+[2, 0, 1, 4, 5, 2]
+Generated sequence: :X1M:
+Prompt: Craft a piece that builds like a tidal wave, with swelling sound layers that represent a surge of overwhelming emotions
+[2, 0, 1, 4, 5, 2]
+Generated sequence: :X1M:
+Prompt: Generate a relaxing jazz tune, very relaxing
+[2, 0, 1, 4, 5, 2]
+Generated sequence: :X1M:
+Prompt: Generate a spooky and mysterious melody
+[2, 0, 1, 4, 5, 2]
+Generated sequence: :X1M:

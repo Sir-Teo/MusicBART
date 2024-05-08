@@ -10,18 +10,30 @@ def load_model(model_path, device):
     return model
 
 def generate_midi(model, prompt, prompt_tokenizer, device):
-    prompt_tensor = torch.tensor(prompt_tokenizer.tokenize(prompt)).to(device)
+    # Tokenize the prompt using the PromptTokenizer and convert to tensor
+    prompt_tensor = torch.tensor(prompt_tokenizer.tokenize(prompt), dtype=torch.long).to(device)
+    # Add a batch dimension
     prompt_tensor = prompt_tensor.unsqueeze(0)
-    attention_mask = torch.ones(prompt_tensor.shape, dtype=torch.long, device=device)
     
+    # Create attention_mask considering the BartTokenizer does not explicitly use a pad token for zeros
+    attention_mask = torch.where(prompt_tensor != prompt_tokenizer.pad_token_id, 
+                                 torch.ones_like(prompt_tensor), 
+                                 torch.zeros_like(prompt_tensor)).to(device)
+
+    # Generate the sequence with the model
     generated_sequence = model.generate(
-        prompt_tensor,
-        attention_mask,
+        input_ids=prompt_tensor,
+        attention_mask=attention_mask,
         num_beams=2,
-        max_length=256,  # Increase the maximum length of the generated sequence
+        max_length=256  # Define the maximum length of the generated sequence
     )
     
-    return generated_sequence
+    # Convert the generated token IDs back to MIDI notation using the MidiTokenizer
+    midi_output = midi_tokenizer.detokenize(generated_sequence.squeeze(0).tolist())
+
+    return midi_output
+
+
 
 def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

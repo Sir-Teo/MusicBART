@@ -6,6 +6,8 @@ import torch
 import argparse
 from test_model import generate_midi
 
+# torchrun --nproc_per_node=2 main_parallel.py --model_name bart --epochs 30 --batch_size 6 --learning_rate 5e-6
+
 
 def collate_fn(batch, device):
     input_ids = [torch.tensor(item['input_ids']) for item in batch]
@@ -21,7 +23,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     # Preprocess the dataset
-    dataset_path = "data/prompts_clean.json"
+    dataset_path = "data/sample.json"
     dataset = load_dataset(dataset_path)
     dataset = preprocess_data(dataset)
 
@@ -47,7 +49,7 @@ def main():
 
 
     # Split the dataset into train and validation sets
-    train_size = int(0.8 * len(tokenized_dataset))
+    train_size = int(0.9 * len(tokenized_dataset))
     train_dataset = tokenized_dataset[:train_size]
     val_dataset = tokenized_dataset[train_size:]
     
@@ -73,7 +75,7 @@ def main():
     # Generate and evaluate midi files
     prompts = [
         "Compose a piece that evokes a sense of deep sorrow and loneliness. Use minor chords and slow tempo to create a mournful and reflective atmosphere. Try incorporating long, expressive phrases with subtle dynamics to enhance the emotional depth of the melody.",
-        "Generate an epic orchestral theme",
+        "Create an energetic and frantic music piece that captures a sense of urgency and turmoil. Experiment with rapid tempo changes and dissonant harmonies to convey a feeling of chaos and unrest. Incorporate dynamic shifts and abrupt pauses to add tension and unpredictability to the composition. Let the music build to a climactic and unsettling conclusion that leaves the listener on edge.",
         "Generate a relaxing jazz tune, very relaxing",
         "Generate a spooky and mysterious melody",
     ]

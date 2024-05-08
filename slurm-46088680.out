@@ -1,0 +1,94 @@
+[2024-05-05 12:27:15,199] torch.distributed.run: [WARNING] 
+[2024-05-05 12:27:15,199] torch.distributed.run: [WARNING] *****************************************
+[2024-05-05 12:27:15,199] torch.distributed.run: [WARNING] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+[2024-05-05 12:27:15,199] torch.distributed.run: [WARNING] *****************************************
+Allocated memory: 0.0 GB, Cached memory: 0.0 GB
+Allocated memory: 0.0 GB, Cached memory: 0.0 GB
+Epoch [1/30], Average Loss: 2.1858
+Epoch [1/30], Average Loss: 2.1819
+Epoch [2/30], Average Loss: 1.0233
+Epoch [2/30], Average Loss: 1.0262
+Epoch [3/30], Average Loss: 0.8153
+Epoch [3/30], Average Loss: 0.8201
+Epoch [4/30], Average Loss: 0.7075
+Epoch [4/30], Average Loss: 0.7119
+Epoch [5/30], Average Loss: 0.6556
+Epoch [5/30], Average Loss: 0.6621
+Epoch [6/30], Average Loss: 0.6240
+Epoch [6/30], Average Loss: 0.6306
+Epoch [7/30], Average Loss: 0.5989
+Epoch [7/30], Average Loss: 0.6093
+Epoch [8/30], Average Loss: 0.5817
+Epoch [8/30], Average Loss: 0.5880
+Epoch [9/30], Average Loss: 0.5679
+Epoch [9/30], Average Loss: 0.5723
+Epoch [10/30], Average Loss: 0.5540
+Epoch [10/30], Average Loss: 0.5592
+Epoch [11/30], Average Loss: 0.5418
+Epoch [11/30], Average Loss: 0.5470
+Epoch [12/30], Average Loss: 0.5330
+Epoch [12/30], Average Loss: 0.5379
+Epoch [13/30], Average Loss: 0.5304
+Epoch [13/30], Average Loss: 0.5356
+Epoch [14/30], Average Loss: 0.5159
+Epoch [14/30], Average Loss: 0.5218
+Epoch [15/30], Average Loss: 0.5095
+Epoch [15/30], Average Loss: 0.5156
+Epoch [16/30], Average Loss: 0.5029
+Epoch [16/30], Average Loss: 0.5098
+Epoch [17/30], Average Loss: 0.4967
+Epoch [17/30], Average Loss: 0.5083
+Epoch [18/30], Average Loss: 0.4931
+Epoch [18/30], Average Loss: 0.4998
+Epoch [19/30], Average Loss: 0.4859
+Epoch [19/30], Average Loss: 0.4948
+Epoch [20/30], Average Loss: 0.4853
+Epoch [20/30], Average Loss: 0.4890
+Epoch [21/30], Average Loss: 0.4768
+Epoch [21/30], Average Loss: 0.4836
+Epoch [22/30], Average Loss: 0.4740
+Epoch [22/30], Average Loss: 0.4817
+Epoch [23/30], Average Loss: 0.4703
+Epoch [23/30], Average Loss: 0.4748
+Epoch [24/30], Average Loss: 0.4911
+Epoch [24/30], Average Loss: 0.4904
+Epoch [25/30], Average Loss: 0.4827
+Epoch [25/30], Average Loss: 0.4886
+Epoch [26/30], Average Loss: 0.4696
+Epoch [26/30], Average Loss: 0.4794
+Epoch [27/30], Average Loss: 0.4730
+Epoch [27/30], Average Loss: 0.4733
+Epoch [28/30], Average Loss: 0.4589
+Epoch [28/30], Average Loss: 0.4663
+Epoch [29/30], Average Loss: 0.4564
+Epoch [29/30], Average Loss: 0.4602
+Epoch [30/30], Average Loss: 0.4534
+Epoch [30/30], Average Loss: 0.4720
+Evaluation Loss: 0.4567
+Evaluation Loss: 0.4713
+Validation Loss: 0.4713
+Prompt: Compose a piece that evokes a sense of deep sorrow and loneliness. Use minor chords and slow tempo to create a mournful and reflective atmosphere. Try incorporating long, expressive phrases with subtle dynamics to enhance the emotional depth of the melody.
+[2, 0, 5, 30, 37, 30, 25, 30, 22, 30, 26, 30, 41, 30, 27, 30, 36, 30, 38, 30, 18, 30, 44, 30, 28, 30, 43, 30, 27, 29, 30, 36, 29, 30, 38, 29, 30, 18, 29, 30, 44, 29, 30, 28, 29, 30, 43, 29, 30, 31, 33, 34, 35, 7, 40, 3, 32, 39, 30, 37, 25, 22, 26, 41, 27, 36, 38, 18, 44, 28, 43, 27, 29, 36, 29, 38, 29, 18, 29, 44, 29, 28, 29, 43, 29, 31, 32, 41, 42, 30, 39, 30, 25, 22, 30, 41, 36, 30, 18, 44, 30, 43, 44, 29, 29, 31, 48, 7, 32, 26, 42, 30, 41, 42, 39, 30, 22, 41, 30, 36, 44, 30, 31, 48, 32, 22, 42, 30, 26, 42, 39, 41, 36, 44, 31, 33, 46, 33, 34, 7, 32, 22, 30, 44, 43, 29, 29, 30, 30, 31, 32, 22, 44, 30, 44, 38, 29, 29, 43, 104, 29, 31, 7, 32, 37, 30, 22, 38, 30, 44, 31, 32, 37, 22, 30, 38, 44, 30, 38, 43, 30, 44, 44, 29, 43, 38, 29, 43, 43, 29, 43, 31, 48, 35, 3, 32, 22, 38, 44, 43, 31, 32, 25, 30, 41, 38, 30, 43, 31, 7, 22, 32, 25, 41, 30, 38, 18, 30, 43, 18, 29, 29, 18, 31, 48, 33, 34, 32, 41, 30, 18, 43, 30, 31, 34, 32, 22, 41, 18, 43, 31, 34, 7, 45, 33, 34, 41, 33, 34, 30, 32, 41, 18, 30, 31, 2]
+Generated sequence: sharpX-g-f-e-d-c-B-A-G-F-E-D-C-B,-A,-G,-F,-E,-D,-C,-]/2| \
+[a-gfedcBAGFEDCB,A,G,F,E,D,C,][c'-a-fe-cA-FE-CE,,]3/2 [d'-c'a-ec-AE-]3/2[e'-d'acAE]/3/2 [e-EC,,--][eE-EG,,C[UNK],] [g-eG-E][ge-GE-GC-EE,CG,CC,C]3/2|
+[eGEC][f-cG-C] e[fc-GF-CF,,F]3/2/2[c-FC-]2[ecFC]2 z/2c/2-[cF-]sharp
+Prompt: Craft a piece that builds like a tidal wave, with swelling sound layers that represent a surge of overwhelming emotions
+[2, 0, 5, 30, 22, 30, 26, 30, 41, 30, 27, 30, 36, 30, 38, 30, 18, 30, 44, 30, 28, 30, 43, 30, 27, 29, 30, 36, 29, 30, 38, 29, 30, 18, 29, 30, 44, 29, 30, 28, 29, 30, 43, 29, 30, 31, 33, 34, 35, 7, 40, 3, 32, 41, 42, 30, 23, 30, 39, 30, 37, 30, 25, 30, 22, 26, 30, 26, 41, 27, 36, 38, 18, 44, 28, 43, 27, 29, 36, 29, 38, 29, 18, 29, 44, 29, 28, 29, 43, 29, 31, 32, 26, 42, 41, 42, 23, 39, 37, 25, 22, 26, 41, 36, 38, 44, 28, 29, 29, 30, 32, 37, 30, 26, 38, 29, 29, 44, 30, 29, 29, 31, 7, 32, 37, 26, 30, 38, 44, 30, 44, 44, 29, 29, 27, 29, 29, 29, 38, 44, 29, 31, 48, 32, 26, 38, 30, 44, 31, 32, 38, 44, 31, 48, 7, 32, 26, 30, 27, 38, 30, 31, 32, 22, 30, 38, 27, 29, 31, 34, 32, 22, 26, 27, 30, 38, 28, 30, 31, 48, 35, 3, 32, 26, 27, 28, 31, 34, 7, 45, 33, 34, 32, 27, 30, 28, 31, 48, 26, 33, 34, 7, 32, 27, 38, 28, 31, 46, 33, 34, 30, 32, 26, 28, 30, 27, 31, 48, 33, 34, 28, 33, 34, 38, 29, 33, 34, 45, 46, 7, 32, 28, 30, 28, 38, 29, 31, 46, 32, 28, 27, 29, 28, 31, 32, 27, 29, 38, 31, 33, 46, 33, 46, 35, 7, 2]
+Generated sequence: sharpX-e-d-c-B-A-G-F-E-D-C-B,-A,-G,-F,-E,-D,-C,-]/2| \
+[c'-b-a-g-f-ed-dcBAGFEDCB,A,G,F,E,D,C,][d'c'bagfedcAGED,,-[g-dG,,E-,,] [gd-GE-EE,,B,,,GE,]3/2[dG-E][GE]3/2 [d-BG-][e-GB,]2[edB-GD-]3/2|
+[dBD]2 z/2[B-D]3/2d/2 [BGD]3/2-[dD-B]3/2/2D/2G,/2z3 [D-DG,]3[DB,D][B,G]/3/3| sharp
+Prompt: Generate a relaxing jazz tune, very relaxing
+[2, 0, 5, 21, 22, 23, 24, 22, 3, 29, 30, 31, 33, 34, 32, 37, 30, 25, 30, 22, 30, 26, 30, 41, 30, 27, 30, 36, 30, 38, 30, 18, 30, 44, 30, 28, 30, 43, 30, 27, 29, 30, 36, 29, 30, 38, 29, 30, 18, 29, 30, 44, 29, 30, 28, 29, 30, 43, 29, 30, 27, 36, 29, 29, 30, 15, 38, 29, 29, 31, 33, 46, 32, 37, 25, 22, 26, 41, 27, 36, 38, 18, 44, 28, 43, 27, 29, 36, 29, 38, 29, 18, 29, 44, 29, 28, 29, 43, 29, 27, 29, 29, 36, 38, 29, 44, 43, 29, 29, 27, 30, 31, 48, 32, 27, 30, 38, 44, 30, 43, 38, 29, 43, 30, 43, 43, 29, 31, 48, 35, 7, 40, 3, 32, 27, 38, 30, 44, 43, 30, 31, 32, 38, 44, 43, 31, 48, 7, 32, 38, 30, 43, 31, 32, 41, 30, 38, 43, 30, 38, 31, 48, 33, 34, 7, 32, 41, 38, 43, 31, 34, 7, 45, 46, 33, 34, 41, 33, 34, 30, 32, 41, 43, 30, 18, 43, 29, 43, 31, 46, 32, 43, 30, 36, 43, 29, 18, 31, 35, 3, 32, 43, 31, 50, 7, 45, 33, 34, 45, 46, 46, 46, 34, 30, 35, 7, 3, 45, 46, 45, 46, 50, 7, 38, 33, 34, 35, 7, 38, 34, 30, 7, 38, 46, 46, 38, 34, 38, 46, 30, 32, 38, 38, 29, 31, 34, 35, 3, 38, 33, 30, 32, 36, 38, 30, 2]
+Generated sequence: sharpXreble
+,-]/2[g-f-e-d-c-B-A-G-F-E-D-C-B,-A,-G,-F,-E,-D,-C,-BA,,-=G,,]/3[gfedcBAGFEDCB,A,G,F,E,D,C,B,,AG,EC,,B-]3/2[B-GE-CG,C-CC,]3/2| \
+[BG-EC-][GEC]3/2 [G-C][c-GC-G]3/2/2 [cGC]2 z3/2c/2-[cC-FC,C]3[C-AC,F]|
+[C]4 z/2z3332-| 
+z3z34 G/2| G2- G33G2G3-[GG,]2|
+G/-[AG-sharp
+Prompt: Generate a spooky and mysterious melody
+[2, 0, 5, 21, 22, 23, 24, 22, 3, 29, 30, 31, 33, 34, 32, 26, 42, 30, 41, 42, 30, 23, 30, 39, 30, 37, 30, 25, 30, 22, 30, 26, 30, 41, 30, 27, 30, 36, 30, 38, 30, 18, 30, 44, 30, 28, 30, 43, 30, 27, 29, 30, 36, 29, 30, 38, 29, 30, 18, 29, 30, 44, 29, 30, 28, 29, 30, 43, 29, 30, 27, 36, 29, 29, 30, 15, 38, 29, 29, 18, 29, 29, 31, 32, 22, 42, 26, 42, 41, 42, 23, 39, 37, 25, 22, 26, 41, 27, 36, 38, 18, 44, 28, 43, 27, 29, 36, 29, 38, 29, 44, 29, 28, 29, 43, 29, 27, 29, 29, 15, 18, 29, 31, 48, 7, 32, 39, 30, 26, 36, 30, 18, 43, 29, 29, 43, 31, 48, 32, 39, 26, 30, 36, 18, 30, 43, 18, 29, 43, 30, 43, 43, 29, 31, 34, 35, 7, 40, 3, 32, 26, 36, 18, 43, 30, 31, 34, 7, 32, 26, 30, 43, 31, 34, 32, 22, 26, 30, 28, 43, 30, 18, 31, 48, 26, 33, 34, 30, 7, 32, 22, 30, 41, 43, 30, 36, 31, 34, 22, 33, 34, 22, 30, 32, 22, 41, 30, 43, 36, 30, 31, 48, 35, 3, 32, 41, 30, 36, 43, 36, 29, 31, 46, 32, 41, 36, 30, 43, 44, 29, 31, 33, 46, 33, 34, 7, 45, 33, 34, 36, 33, 34, 45, 46, 36, 29, 33, 34, 35, 3, 45, 46, 45, 46, 33, 2]
+Generated sequence: sharpXreble
+,-]/2[d'-c'-b-a-g-f-e-d-c-B-A-G-F-E-D-C-B,-A,-G,-F,-E,-D,-C,-BA,,-=G,,F,,][e'd'c'bagfedcBAGFEDCB,A,G,E,D,C,B,,=F,]3/2 [a-dA-FC,,C]3/2[ad-AF-CF,C-CC,]2| \
+[dAFC-]2 [d-C]2[ed-DC-F]3/2d/2- [e-cC-A]2e/2e-[ec-CA-]3/2|
+[c-ACA,]3[cA-CE,]/3/2 z/2A/2z3A,/2|
+z3z3/sharp

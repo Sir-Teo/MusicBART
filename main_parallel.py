@@ -60,7 +60,7 @@ def main():
         tokenized_dataset.append({"input_ids": input_ids, "labels": labels})
 
     # Split the dataset into train and validation sets
-    train_size = int(0.8 * len(tokenized_dataset))
+    train_size = int(0.9 * len(tokenized_dataset))
     train_dataset = tokenized_dataset[:train_size]
     val_dataset = tokenized_dataset[train_size:]
 
@@ -88,6 +88,8 @@ def main():
             print(f"Prompt: {prompt}")
             generated_sequence = generate_midi(model.module, prompt, prompt_tokenizer, device)
             print(f"Generated sequence: {generated_sequence}")
+        
+        midi_tokenizer.save_vocab('tokenizer.json')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train and evaluate the MusicBART model")

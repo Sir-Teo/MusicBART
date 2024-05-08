@@ -9,7 +9,8 @@ class MusicGPT(nn.Module):
     def __init__(self, model_name="gpt2", max_length=128):
         super(MusicGPT, self).__init__()
         self.model = GPT2LMHeadModel.from_pretrained(model_name)
-        self.tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+        self.prompt_tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+        self.midi_tokenizer = MidiTokenizer()  # Add this line to instantiate the MidiTokenizer
         self.max_length = max_length
     
     def forward(self, input_ids, attention_mask, labels=None):
@@ -25,10 +26,10 @@ class MusicGPT(nn.Module):
     def generate(self, input_ids, attention_mask, num_beams=8, max_length=256):
         num_beams = int(num_beams)  # Convert num_beams to a scalar value
         outputs = self.model.generate(
-        input_ids=input_ids,
-        max_length=max_length,
-        attention_mask=attention_mask,
-        num_beams=num_beams,
+            input_ids=input_ids,
+            max_length=max_length,
+            attention_mask=attention_mask,
+            num_beams=num_beams,
         ) 
         generated_sequence = outputs[0].tolist()  # Convert the generated sequence to a list
         midi_sequence = self.midi_tokenizer.detokenize(generated_sequence)  # Use the instance to call detokenize
@@ -54,7 +55,7 @@ class MusicBART(nn.Module):
         
         return outputs
     
-    def generate(self, input_ids, attention_mask, num_beams=8, max_length=256):
+    def generate(self, input_ids, attention_mask, num_beams=5, max_length=256):
         num_beams = int(num_beams)  # Convert num_beams to a scalar value
         outputs = self.model.generate(
         input_ids=input_ids,
